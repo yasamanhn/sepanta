@@ -770,8 +770,8 @@ body {
   border-radius: 4px;
 }
 img {
-  width: auto;
-  height: auto;
+  width: 320px;
+  height: 320px;
 }
 .wine-row {
   display: flex;

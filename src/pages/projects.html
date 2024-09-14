@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>وبلاگ - سپنتا</title>
-    <link href="/input.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/blog.css" />
-    <link rel="stylesheet" href="/dakheli.css" />
-    <link rel="stylesheet" href="/footerAndnavbar.css" />
+    <title>گروه معماری سپنتا</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/src/css/style.css" />
+    <link href="/src/css/input.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/css/dakheli.css" />
+    <link rel="stylesheet" href="/src/css/footerAndnavbar.css" />
+    <link rel="stylesheet" href="/src/css/landing.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -24,7 +26,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-    <link rel="stylesheet" href="/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/src/css/swiper-bundle.min.css" />
     <style>
       /*=============== GOOGLE FONTS ===============*/
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
@@ -421,7 +423,7 @@
   </head>
   <body>
     <!--=============== HEADER ===============-->
-    <header class="header" id="navbar">
+   <header class="header" id="navbar">
       <nav class="nav flex-row-reverse">
         <div class="nav__data">
           <a href="landing.html" class="nav__logo">
@@ -542,99 +544,226 @@
       </nav>
     </header>
 
-    <section class="mb-10">
-      <div class="mt-20">
-        <div class="xl:mt-5 gap-8 flex justify-end">
-          <div class="w-full">
+    <section>
+      <div class="section-one relative">
+        <div
+          class="flex justify-center flex-col relative"
+          style="margin: 1rem 5rem 0 7rem"
+        >
+          <div class="mt-5">
             <div
-              class="md:mt-10 md:mr-10 mr-2 text-right font-bold text-gray-800 text-lg"
+              class="mt-20 self-stretch text-right font-bold text-gray-800 text-lg font-iransans break-words"
             >
-              نمایش بر اساس دسته بندی
+              پروژه های هلدینگ ساختمانی سپنتا
+            </div>
+            <div
+              class="pt-2 self-stretch text-right text-gray-800 text-base font-iransans font-normal break-words"
+            >
+              مهندسین باتجربه سپنتا در تمامی مراحل پروژه کنار شما هستند
             </div>
 
             <div class="flex items-center">
-              <!-- check box -->
               <div
-                class="flex gap-12 mr-5 w-full flex-col md:flex-row md:p-10"
-                id="checkboxes-container"
+                class="text-right text-gray-800 text-base font-iransans font-normal break-words"
               >
-                <label for="newBlog" class="checkbox-custom-label">
+                نمایش بر اساس دسته بندی :
+              </div>
+              <!-- check box -->
+              <div class="flex gap-10 p-10" id="checkboxes-container">
+                <label for="Residential-projects" class="checkbox-custom-label">
                   <input
                     type="checkbox"
                     class="checkbox-custom"
-                    id="newBlog"
+                    id="Residential-projects"
                     onchange="filterImages()"
                   />
                   <span class="checkmark"></span>
-                  <span class="label-text"> جدیدترین ها</span>
+                  <span class="label-text"> پروژه های طراحی</span>
                 </label>
-                <label for="memaari" class="checkbox-custom-label">
+                <label for="edaari" class="checkbox-custom-label">
                   <input
                     type="checkbox"
                     class="checkbox-custom"
-                    id="memaari"
+                    id="edaari"
                     onchange="filterImages()"
                   />
                   <span class="checkmark"></span>
-                  <span class="label-text">معماری</span>
+                  <span class="label-text">پروژه های نظارت</span>
                 </label>
-                <label for="hoghooghi" class="checkbox-custom-label">
+                <label for="tejari" class="checkbox-custom-label">
                   <input
                     type="checkbox"
                     class="checkbox-custom"
-                    id="hoghooghi"
+                    id="tejari"
                     onchange="filterImages()"
                   />
                   <span class="checkmark"></span>
-                  <span class="label-text">حقوقی</span>
+                  <span class="label-text"> پروژه های اجرا</span>
                 </label>
-                <label for="structure " class="checkbox-custom-label">
+                <label for="other" class="checkbox-custom-label">
                   <input
                     type="checkbox"
                     class="checkbox-custom"
-                    id="structure "
+                    id="other"
                     onchange="filterImages()"
                   />
                   <span class="checkmark"></span>
-                  <span class="label-text">سازه</span>
-                </label>
-                <label for="ejrayi" class="checkbox-custom-label">
-                  <input
-                    type="checkbox"
-                    class="checkbox-custom"
-                    id="ejrayi"
-                    onchange="filterImages()"
-                  />
-                  <span class="checkmark"></span>
-                  <span class="label-text">اجرایی</span>
-                </label>
-                <label for="news" class="checkbox-custom-label">
-                  <input
-                    type="checkbox"
-                    class="checkbox-custom"
-                    id="news"
-                    onchange="filterImages()"
-                  />
-                  <span class="checkmark"></span>
-                  <span class="label-text">اخبار</span>
+                  <span class="label-text">پروژه های ۰ تا ۱۰۰</span>
                 </label>
                 <!-- Add more checkboxes for other categories -->
               </div>
             </div>
           </div>
+          <!-- section two arttures -->
+          <div class="wrapper" id="image-container">
+            <script>
+              // create more box
+              const imagePaths = [
+                {
+                  path: "/assets/images/art2.png",
+                  category: "other",
+                  title: "پروژه ۱",
+                },
+                {
+                  path: "/assets/images/art7.png",
+                  category: "edaari",
+                  title: "پروژه ۲",
+                },
+                {
+                  path: "/assets/images/art3.png",
+                  category: "tejari",
+                  title: "پروژه ۳",
+                },
+                {
+                  path: "/assets/images/art4.png",
+                  category: "other",
+                  title: "پروژه ۴",
+                },
+                {
+                  path: "/assets/images/art5.png",
+                  category: "edaari",
+                  title: "پروژه ۵",
+                },
+                {
+                  path: "/assets/images/art2.png",
+                  category: "other",
+                  title: "پروژه ۶",
+                },
+                {
+                  path: "/assets/images/art7.png",
+                  category: "edaari",
+                  title: "پروژه ۷",
+                },
+                {
+                  path: "/assets/images/art3.png",
+                  category: "tejari",
+                  title: "پروژه ۸",
+                },
+                {
+                  path: "/assets/images/art4.png",
+                  category: "other",
+                  title: "پروژه ۹",
+                },
+                {
+                  path: "/assets/images/art5.png",
+                  category: "edaari",
+                  title: "پروژه ۱۰",
+                },
+                {
+                  path: "/assets/images/art7.png",
+                  category: "Residential-projects",
+                  title: "پروژه ویلای کردان",
+                },
+                {
+                  path: "/assets/images/art6.png",
+                  category: "Residential-projects",
+                  title: "۱۱ پروژه ",
+                },
+                {
+                  path: "/assets/images/art7.png",
+                  category: "Residential-projects",
+                  title: "پروژه ۱۲",
+                },
+
+                {
+                  path: "/assets/images/art6.png",
+                  category: "Residential-projects",
+                  title: "پروژه  ۱۳",
+                },
+
+                // Add more images with appropriate categories
+              ];
+
+              const containerBox = document.getElementById("image-container");
+              imagePaths.forEach((image) => {
+                let boxDiv = document.createElement("div");
+                boxDiv.setAttribute("class", "box");
+                boxDiv.setAttribute("data-category", image.category); // Assigning category to data attribute
+
+                let img = document.createElement("img");
+                img.setAttribute("src", image.path);
+                img.setAttribute("alt", "");
+
+                let introDiv = document.createElement("div");
+                introDiv.setAttribute("class", "intro");
+
+                let heading = document.createElement("h3");
+                heading.textContent = image.title;
+
+                let paragraph = document.createElement("p");
+                paragraph.textContent = "نمایش بیشتر";
+                // Add click event listener to paragraph to navigate to singleDesign.html
+                paragraph.addEventListener("click", function () {
+                  window.location.href = "SingleDesignProject.html"; // Relative path to singleDesign.html page
+                });
+
+                //این کد برای ایجادو اضافه کردن عناصر اچ تی ام ال به دام است
+                introDiv.appendChild(heading);
+                introDiv.appendChild(paragraph);
+
+                boxDiv.appendChild(img);
+                boxDiv.appendChild(introDiv);
+
+                containerBox.appendChild(boxDiv);
+              });
+              //فیلتر کردن عکس ها
+              function filterImages() {
+                const checkboxes =
+                  document.querySelectorAll(".checkbox-custom");
+                const selectedCategories = Array.from(checkboxes)
+                  .filter((checkbox) => checkbox.checked)
+                  //شی مپ جفت‌های کلید-مقدار را نگهداری می‌کنه
+                  //[key, value]
+                  .map((checkbox) => checkbox.id);
+
+                //If the image belongs to a category selected by the user or no category has been selected,
+                //style.display is set to "block" to display the image.
+                //Otherwise, style.display is set to "none" to hide the image.
+                const boxes = document.querySelectorAll(".box");
+                let x = 0;
+                boxes.forEach((box) => {
+                  const category = box.dataset.category;
+                  if (selectedCategories.includes(category)) {
+                    box.style.display = "block";
+                  } else {
+                    box.style.display = "none";
+                  }
+                  if (selectedCategories.length === 0) {
+                    if (x < 12) {
+                      box.style.display = "block";
+                      x++;
+                    }
+                  }
+                });
+              }
+            </script>
+          </div>
+          <!--paginate-->
+          <div class="paginate mt-20 mb-10"></div>
         </div>
       </div>
-      <section>
-        <div
-          class="wrapper-blog m-12 flex flex-col gap-5 md:grid md:grid-cols-2 md:gap-5 md:m-10 md:p-5 lg:grid-cols-3 lg:gap-5 lg:m-20 lg:p-5"
-          id="image-container"
-        ></div>
-      </section>
-      <!--paginate-->
     </section>
-
     <footer>
-      <!-- footer -->
       <div class="" id="section5">
         <section
           class="flex flex-col-reverse w-full gap-10 p-10 xl:flex-row"
@@ -755,14 +884,8 @@
       </div>
       <!-- end section footer -->
     </footer>
-
-    <script src="/blog.js"></script>
-    <script src="/services.js"></script>
-    <script>
-      function toggleNav() {
-        var nav = document.getElementById("navbar");
-        menu.classList.toggle("mobile-menu"); // Toggle the 'mobile-menu' class
-      }
-    </script>
+    <script src="/index.js"></script>
+    <script src="/src/script/checkBoxFilter-pagination.js"></script>
   </body>
 </html>
+<style></style>
