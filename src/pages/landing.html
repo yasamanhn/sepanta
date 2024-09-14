@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>گروه معماری سپنتا</title>
+    <meta charset="utf-8" />
+    <link href="/src/css/input.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/css/dakheli.css" />
+    <link rel="stylesheet" href="/src/css/footerAndnavbar.css" />
+    <link rel="stylesheet" href="/src/css/landing.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link rel="stylesheet" href="/src/css/swiper-bundle.min.css" />
+    <style>
+      /*=============== GOOGLE FONTS ===============*/
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+      /*=============== VARIABLES CSS ===============*/
+      :root {
+        --header-height: 3.5rem;
+        /*========== Colors ==========*/
+        /*Color mode HSL(hue, saturation, lightness)*/
+        --first-color: hsl(220, 68%, 54%);
+        --first-color-lighten: hsl(220, 68%, 97%);
+        --text-color: hsl(220, 12%, 45%);
+        --body-color: hsl(220, 100%, 99%);
+        /*========== Font and typography ==========*/
+        /*.5rem = 8px | 1rem = 16px ...*/
+        --normal-font-size: 0.938rem;
+        --small-font-size: 0.813rem;
+        --smaller-font-size: 0.75rem;
+        /*========== Font weight ==========*/
+        --font-medium: 500;
+        /*========== z index ==========*/
+        --z-tooltip: 10;
+        --z-fixed: 999;
+      }
+      @media screen and (min-width: 1024px) {
+        :root {
+          --normal-font-size: 1rem;
+          --small-font-size: 0.875rem;
+          --smaller-font-size: 0.813rem;
+        }
+      }
+
+      /*=============== BASE ===============*/
+
+      ul {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      /*=============== REUSABLE CSS CLASSES ===============*/
+
+      /*=============== HEADER ===============*/
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 2px 8px hsla(220, 68%, 12%, 0.1);
+        backdrop-filter: blur(20px) brightness(100%);
+        z-index: var(--z-fixed);
+        background-color: rgba(223, 223, 223, 1);
+      }
+
+      /*=============== NAV ===============*/
+      .nav {
+        height: var(--header-height);
+      }
+      .nav__data {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav__logo {
+        display: inline-flex;
+        align-items: center;
+        column-gap: 0.25rem;
+        color: var(--title-color);
+        font-weight: var(--font-semi-bold);
+        transition: color 0.3s;
+        margin-right: 3rem;
+      }
+      .nav__logo i {
+        font-size: 1.25rem;
+      }
+      .nav__logo:hover {
+        color: var(--first-color);
+      }
+      .nav__toggle {
+        position: relative;
+        width: 32px;
+        height: 32px;
+      }
+      .nav__toggle-menu,
+      .nav__toggle-close {
+        font-size: 1.25rem;
+        color: #f59115;
+        position: absolute;
+        display: grid;
+        place-items: center;
+        inset: 0;
+        cursor: pointer;
+        transition: opacity 0.1s, transform 0.4s;
+      }
+      .nav__toggle-close {
+        opacity: 0;
+      }
+      @media screen and (max-width: 1118px) {
+        .dropdown__content {
+          padding: 20px;
+        }
+        .nav__menu {
+          background-color: rgba(223, 223, 223, 0.44);
+          backdrop-filter: blur(20px) brightness(100%);
+          box-shadow: blur(20px);
+          position: absolute;
+          right: 0;
+          top: 2.5rem;
+          height: calc(100vh - 3.5rem);
+          overflow: auto;
+          padding-block: 1.5rem 4rem;
+          pointer-events: none;
+          opacity: 0;
+          transition: top 0.4s, opacity 0.3s;
+        }
+        .image__dropdown {
+          display: none;
+        }
+        .nav__logo {
+          margin-left: 0;
+        }
+
+        .nav__menu::-webkit-scrollbar {
+          width: 0.5rem;
+        }
+        .nav__menu::-webkit-scrollbar-thumb {
+          background-color: hsl(220, 12%, 70%);
+        }
+      }
+      .nav__link {
+        color: var(--title-color);
+        font-weight: var(--font-semi-bold);
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.2s;
+        justify-content: right;
+      }
+      .nav__link:hover {
+        color: #ec860aa8;
+      }
+
+      /* Show menu */
+      .show-menu {
+        opacity: 1;
+        top: 3.5rem;
+        pointer-events: initial;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+
+      /* Show icon */
+      .show-icon .nav__toggle-menu {
+        opacity: 0;
+        transform: rotate(90deg);
+      }
+
+      .show-icon .nav__toggle-close {
+        opacity: 1;
+        transform: rotate(90deg);
+      }
+
+      /*=============== DROPDOWN ===============*/
+      .dropdown__button {
+        cursor: pointer;
+      }
+
+      .dropdown__arrow {
+        font-size: 1.5rem;
+        font-weight: initial;
+        transition: transform 0.4s;
+      }
+      .dropdown__content,
+      .dropdown__group,
+      .dropdown__list {
+        display: grid;
+      }
+      .dropdown__container {
+        /* background-color: var(--first-color-lighten); */
+        height: 0;
+        overflow: hidden;
+        transition: height 0.4s;
+        /* background-image: url(/assets/images/aparteman.png); */
+        text-align: right;
+        display: flex;
+        justify-content: end;
+        opacity: 1;
+      }
+      .dropdown__content {
+        row-gap: 1.75rem;
+      }
+      .dropdown__group {
+        padding-left: 2.5rem;
+        row-gap: 0.5rem;
+        text-align: right;
+      }
+      .dropdown__group:first-child {
+        margin-top: 1.25rem;
+      }
+      .dropdown__group:last-child {
+        margin-bottom: 1.25rem;
+      }
+      .dropdown__icon i {
+        font-size: 1.25rem;
+        color: #f59115;
+      }
+      .dropdown__title {
+        font-size: var(--small-font-size);
+        font-weight: var(--font-semi-bold);
+        color: var(--title-color);
+        direction: rtl;
+        text-align: right;
+      }
+      .dropdown__list {
+        row-gap: 0.25rem;
+      }
+      .dropdown__link {
+        font-size: var(--smaller-font-size);
+        font-weight: var(--font-medium);
+        color: var(--text-color);
+        transition: color 0.3s;
+      }
+      .dropdown__link:hover {
+        color: var(--title-color);
+        color: #f59115;
+      }
+
+      /* Rotate dropdown icon */
+      .show-dropdown .dropdown__arrow {
+        transform: rotate(180deg);
+      }
+
+      /*=============== BREAKPOINTS ===============*/
+      /* For small devices */
+      @media screen and (max-width: 300px) {
+        .dropdown__group {
+          padding-left: 1.5rem;
+        }
+        .dropdown__container {
+          background-image: none;
+        }
+      }
+      /* For large devices */
+      @media screen and (min-width: 1118px) {
+        /* Nav */
+        .nav {
+          height: calc(var(--header-height) + 2rem);
+          display: flex;
+          justify-content: space-between;
+        }
+        .nav__toggle {
+          display: none;
+        }
+        .nav__list {
+          column-gap: 3rem;
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
+        .nav__menu {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+        .nav li {
+          display: flex;
+        }
+        .nav__link {
+          padding: 0;
+        }
+        /* Dropdown */
+        .dropdown__button {
+          column-gap: 0.25rem;
+          pointer-events: none;
+        }
+        .dropdown__container {
+          direction: rtl;
+          height: max-content;
+          text-align: right;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 6.5rem;
+          background-image: none;
+          /* background-color: var(--body-color); */
+          box-shadow: 0 6px 8px hsla(220, 68%, 12%, 0.05);
+          pointer-events: none;
+          opacity: 0;
+          transition: top 0.4s, opacity 0.5s;
+          display: flex;
+          justify-content: end;
+        }
+        .dropdown__content {
+          grid-template-columns: repeat(4, max-content);
+          column-gap: 10rem;
+        }
+        .dropdown__group {
+          align-content: baseline;
+          row-gap: 1.25rem;
+        }
+        .dropdown__group:first-child,
+        .dropdown__group:last-child {
+          margin: 0;
+        }
+        .dropdown__list {
+          row-gap: 0.75rem;
+        }
+        .dropdown__icon {
+          width: 60px;
+          height: 60px;
+          background-color: var(--first-color-lighten);
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+          margin-bottom: 1rem;
+        }
+        .dropdown__icon i {
+          font-size: 2rem;
+        }
+        .dropdown__title {
+          font-size: var(--normal-font-size);
+        }
+        .dropdown__link {
+          font-size: var(--small-font-size);
+        }
+        .dropdown__link:hover {
+          color: var(--first-color);
+          color: #f59115;
+        }
+        .dropdown__item {
+          cursor: pointer;
+        }
+        .dropdown__item:hover .dropdown__arrow {
+          transform: rotate(180deg);
+          color: #f59115;
+        }
+        .dropdown__item:hover > .dropdown__container {
+          top: 4.5rem;
+          background-color: white;
+          opacity: 1;
+          pointer-events: initial;
+          cursor: initial;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+            rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+            rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          background-image: url(/assets/images/aparteman.png);
+          background-size: cover;
+        }
+      }
+
+      @media screen and (min-width: 1152px) {
+        .container {
+          margin-inline: auto;
+        }
+      }
+      @media (max-width: 640px) {
+        .hidden {
+          display: none !important;
+        }
+
+        .md\\:hidden {
+          display: block !important;
+        }
+
+        .sm\\:flex {
+          display: none !important;
+        }
+
+        /* Adjust styles for mobile navigation */
+        .navigation {
+          flex-direction: column;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 1000;
+          display: none;
+          float: right;
+        }
+
+        .navigation.active {
+          display: flex;
+        }
+        .mobile-header {
+          height: auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="navbar">
+      <nav class="nav flex-row-reverse">
+        <div class="nav__data">
+          <a href="landing.html" class="nav__logo">
+            <img
+              src="/assets/images/logo.png"
+              class="w-12 md:w-14 xl:w-20"
+              srcset=""
+            />
+          </a>
+
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line nav__toggle-menu"></i>
+            <i class="ri-close-line nav__toggle-close"></i>
+          </div>
+        </div>
+
+        <!--=============== NAV MENU ===============-->
+        <div class="nav__menu w-full sm:w-1/2 md:w-1/3" id="nav-menu">
+          <ul class="nav__list">
+            <li>
+              <a
+                href="blog.html"
+                class="nav__link"
+                style="text-decoration: none"
+                >وبلاگ</a
+              >
+            </li>
+            <li>
+              <a
+                href="contactWithUs.html"
+                class="nav__link"
+                style="text-decoration: none"
+                >تماس با ما</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="projects.html"
+                class="nav__link"
+                style="text-decoration: none"
+                >پروژه ها</a
+              >
+            </li>
+            <li class="dropdown__item">
+              <div
+                class="nav__link dropdown__button active"
+                style="text-decoration: none; direction: rtl"
+              >
+                خدمات ما<i class="ri-arrow-down-s-line dropdown__arrow"></i>
+              </div>
+              <div class="dropdown__container flex flex-row justify-between">
+                <div class="dropdown__content p-10">
+                  <div class="dropdown__group">
+                    <span class="dropdown__title">طراحی</span>
+                    <ul class="dropdown__list">
+                      <li>
+                        <a href="inside-decoration.html" class="dropdown__link"
+                          >طراحی دکراسیون داخلی</a
+                        >
+                      </li>
+                      <li>
+                        <a href="outside-decoration.html" class="dropdown__link"
+                          >طراحی نمای ساختمان</a
+                        >
+                      </li>
+                      <li>
+                        <a href="javaaz.html" class="dropdown__link">
+                          اخذ جواز</a
+                        >
+                      </li>
+                      <li>
+                        <a href="" class="dropdown__link"> طراحی فاز ۱</a>
+                      </li>
+                      <li>
+                        <a href="#" class="dropdown__link"> طراحی فاز ۲</a>
+                      </li>
+                      <li><a href="#" class="dropdown__link"> ازبیلت </a></li>
+                      <li><a href="#" class="dropdown__link"> بازسازی </a></li>
+                    </ul>
+                  </div>
+                  <div class="dropdown__group">
+                    <span class="dropdown__title">نظارت</span>
+                    <ul class="dropdown__list">
+                      <li>
+                        <a href="#" class="dropdown__link"> نظارت انتخابی</a>
+                      </li>
+                      <li>
+                        <a href="#" class="dropdown__link">استحکام بنا </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="dropdown__group">
+                    <span class="dropdown__title">اجرا</span>
+                    <ul class="dropdown__list">
+                      <li>
+                        <a href="#" class="dropdown__link"> مشارکت در ساخت</a>
+                      </li>
+                      <li>
+                        <a href="#" class="dropdown__link"> مدیریت پیمان </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="image__dropdown relative p-10">
+                  <img
+                    src="/assets/images/services.png"
+                    width="420px"
+                    height="200px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="landing-page">
+      <div class="div">
+        <div class="relative" id="section1">
+          <div class="relative">
+            <img src="/assets/images/image 562.png" class="w-full h-full" />
+          </div>
+          <div class="slideshow-container absolute hidden md:block bottom-0">
+            <div class="modal-hero mr-0 md:mr-5 lg:mr-24">
+              <div class="frame md:mt-24 lg:mt-40">
+                <div class="frame-2">
+                  <div class="text-wrapper">خدمات طراحی</div>
+                  <p class="paragraph-landing">
+                    از ابتدایی ترین گام ساخت وساز<br />
+                    کنار شما هستیم.
+                  </p>
+                </div>
+                <p class="text-wrapper-2">
+                  هلدینگ ساختمانی سپنتا با ارايه طیف وسیعی از خدمات طراحی و با
+                  رعایت استاندارهای بین المللی باعث بهبود ظاهر و عملکرد ساختمان
+                  ها و همچنین تسریع روند مراحل طراحی پروژه ها می شود.
+                </p>
+              </div>
+              <div class="frame-3">
+                <div class="view">
+                  <div class="text-wrapper-3">تماس با مشاورین سپنتا</div>
+                </div>
+                <div class="frame-4">
+                  <div class="frame-6"></div>
+                  <div class="frame-5"></div>
+                  <div class="frame-5"></div>
+                </div>
+                <div class="next" onclick="plusSlides(1)">
+                  <img
+                    src="/assets/images/play_circle.svg"
+                    style="width: 50px"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-hero mr-0 md:mr-5 lg:mr-24">
+              <div class="frame md:mt-24 lg:mt-40">
+                <div class="frame-2">
+                  <div class="text-wrapper">خدمات اجرایی و حقوقی</div>
+                  <p class="paragraph-landing">
+                    در دشوارترین مراحل پروژه ساخت و ساز .<br />
+                    کنار شما هستیم.
+                  </p>
+                </div>
+                <p class="text-wrapper-2">
+                  خدمات اجرایی و حقوقی هلدینگ سپنتا درتمام مراحل عملیات های
+                  ساختمانی و پروژه های ساخت و ساز باعث تسریع و سهولت در انجام
+                  پروژه ها می شود.
+                </p>
+              </div>
+              <div class="frame-3">
+                <div class="view">
+                  <div class="text-wrapper-3">تماس با مشاورین سپنتا</div>
+                </div>
+                <div class="frame-4">
+                  <div class="frame-5"></div>
+                  <div class="frame-6"></div>
+                  <div class="frame-5"></div>
+                </div>
+                <div class="next" onclick="plusSlides(1)">
+                  <img
+                    src="/assets/images/play_circle.svg"
+                    style="width: 50px"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-hero mr-0 md:mr-5 lg:mr-24">
+              <div class="frame md:mt-24 lg:mt-40">
+                <div class="frame-2">
+                  <div class="text-wrapper">خدمات نظارت</div>
+                  <p class="paragraph-landing">تا انتهای مسیر کنار شماهستیم.</p>
+                </div>
+                <p class="text-wrapper-2">
+                  خدمات نظارت هلدینگ ساختمانی سپنتا شامل مجموعه خدماتی است که
+                  مهندسین ناظر برای اطمینان از حسن انجام کارهای ساختمانی و
+                  تاسیساتی با توجه به طرح ها و نقشه ها و مشخصات فنی ساختمان صورت
+                  میگیرد.
+                </p>
+              </div>
+              <div class="frame-3">
+                <div class="view">
+                  <div class="text-wrapper-3">تماس با مشاورین سپنتا</div>
+                </div>
+                <div class="frame-4">
+                  <div class="frame-5"></div>
+                  <div class="frame-5"></div>
+                  <div class="frame-6"></div>
+                </div>
+                <div class="next" onclick="plusSlides(1)">
+                  <img
+                    src="/assets/images/play_circle.svg"
+                    style="width: 50px"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="overlap-group mt-20">
+          <div class="group">
+            <!-- page-2 -->
+            <div class="frame-wrapper mt-20 mb-10" id="section2">
+              <div class="frame-7">
+                <div
+                  class="frame-8 flex flex-col-reverse gap-5 sm:flex-row sm:justify-between"
+                >
+                  <div class="view-2">
+                    <div class="text-wrapper-4">
+                      <a
+                        href="./ShowAllServices.html"
+                        style="text-decoration: none; color: black"
+                      >
+                        نمایش همه خدمات</a
+                      >
+                    </div>
+                  </div>
+                  <div class="frame-9">
+                    <div class="text-wrapper-5">
+                      خدمات هلدینگ ساختمانی سپنتا
+                    </div>
+                    <p class="text-wrapper-6">
+                      در تمامی مراحل پروژه کنار شما هستیم
+                    </p>
+                  </div>
+                </div>
+                <!-- slidershow-page 2 -->
+                <div class="flex justify-center">
+                  <div class="container swiper w-1/2 sm:w-full">
+                    <div
+                      class="slide-container w-1/2 m-auto sm:w-1/2 md:w-full"
+                    >
+                      <div class="card-wrapper swiper-wrapper">
+                        <div class="card-swiper swiper-slide">
+                          <div class="p-5 image-box flex">
+                            <img
+                              src="/assets/images/image 588 (1).png"
+                              alt=""
+                              style="height: 100%; width: 100%"
+                            />
+                          </div>
+                          <div class="profile-details">
+                            <div class="name-job flex flex-col w-full">
+                              <h4 class="job">۰۱</h4>
+                              <h3 class="name">خدمات طراحی</h3>
+                            </div>
+                          </div>
+                          <div class="show-more pr-5">
+                            <span><i class="icon fa fa-angle-left"></i></span>
+                            <span class="text">نمایش بیشتر</span>
+                          </div>
+                        </div>
+                        <div class="card-swiper swiper-slide">
+                          <div class="p-5 image-box flex">
+                            <img
+                              src="/assets/images/image 588 (1).png"
+                              alt=""
+                              style="height: 100%; width: 100%"
+                            />
+                          </div>
+                          <div class="profile-details">
+                            <div class="name-job flex flex-col w-full">
+                              <h4 class="job">۰۱</h4>
+                              <h3 class="name">خدمات طراحی</h3>
+                            </div>
+                          </div>
+                          <div class="show-more pr-5">
+                            <span><i class="icon fa fa-angle-left"></i></span>
+                            <span class="text">نمایش بیشتر</span>
+                          </div>
+                        </div>
+                        <div class="card-swiper swiper-slide">
+                          <div class="p-5 image-box flex">
+                            <img
+                              src="/assets/images/image 588 (1).png"
+                              alt=""
+                              style="height: 100%; width: 100%"
+                            />
+                          </div>
+                          <div class="profile-details">
+                            <div class="name-job flex flex-col w-full">
+                              <h4 class="job">۰۱</h4>
+                              <h3 class="name">خدمات طراحی</h3>
+                            </div>
+                          </div>
+                          <div class="show-more pr-5">
+                            <span><i class="icon fa fa-angle-left"></i></span>
+                            <span class="text">نمایش بیشتر</span>
+                          </div>
+                        </div>
+                        <div class="card-swiper swiper-slide">
+                          <div class="p-5 image-box flex">
+                            <img
+                              src="/assets/images/image 588 (1).png"
+                              alt=""
+                              style="height: 100%; width: 100%"
+                            />
+                          </div>
+                          <div class="profile-details">
+                            <div class="name-job flex flex-col w-full">
+                              <h4 class="job">۰۱</h4>
+                              <h3 class="name">خدمات طراحی</h3>
+                            </div>
+                          </div>
+                          <div class="show-more pr-5">
+                            <span><i class="icon fa fa-angle-left"></i></span>
+                            <span class="text">نمایش بیشتر</span>
+                          </div>
+                        </div>
+                        <div class="card-swiper swiper-slide">
+                          <div class="p-5 image-box flex">
+                            <img
+                              src="/assets/images/image 588 (1).png"
+                              alt=""
+                              style="height: 100%; width: 100%"
+                            />
+                          </div>
+                          <div class="profile-details">
+                            <div class="name-job flex flex-col w-full">
+                              <h4 class="job">۰۱</h4>
+                              <h3 class="name">خدمات طراحی</h3>
+                            </div>
+                          </div>
+                          <div class="show-more pr-5">
+                            <span><i class="icon fa fa-angle-left"></i></span>
+                            <span class="text">نمایش بیشتر</span>
+                          </div>
+                        </div>
+                        <div class="card-swiper swiper-slide">
+                          <div class="p-5 image-box flex">
+                            <img
+                              src="/assets/images/image 588 (1).png"
+                              alt=""
+                              style="height: 100%; width: 100%"
+                            />
+                          </div>
+                          <div class="profile-details">
+                            <div class="name-job flex flex-col w-full">
+                              <h4 class="job">۰۱</h4>
+                              <h3 class="name">خدمات طراحی</h3>
+                            </div>
+                          </div>
+                          <div class="show-more pr-5">
+                            <span><i class="icon fa fa-angle-left"></i></span>
+                            <span class="text">نمایش بیشتر</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="">
+                  <div class="swiper-button-prev swiper-navBtn"></div>
+                  <div class="swiper-button-next swiper-navBtn"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end slidershow-page 2 -->
+          <div class="group-2 flex m-auto pt-16" id="section3">
+            <div class="view-6 m-5 mb-20 flex flex-col xl:flex-row xl: gap-5">
+              <div class="frame-15">
+                <div class="frame-16">
+                  <img
+                    class="image-3 max-w-xl"
+                    src="/assets/images/9c5731f2f6b91ca3bb8f7f5c342cd32a.png"
+                  />
+                </div>
+              </div>
+              <div class="frame-17 max-w-xl">
+                <div class="frame-19">
+                  <div class="frame-20">
+                    <p class="text-wrapper-11">
+                      چرا هلدینگ ساختمانی سپنتا انتخاب شماست؟
+                    </p>
+                    <div class="frame-21"></div>
+                  </div>
+                  <div class="frame-22">
+                    <div class="frame-20">
+                      <p class="text-wrapper-12">
+                        گسترده بودن طیف خدماتی که ما به مشتریان خود ارايه می
+                        دهیم روند پروژه ها را به مسیری آسان و دلپذیر تبدیل می
+                        کند.<br />ما از ابتدایی ترین گام های مسیر درکنار شما
+                        هستیم.
+                      </p>
+                      <div class="frame-23 bolding-page3"></div>
+                    </div>
+                    <div class="frame-24">
+                      <p class="text-wrapper-12">
+                        در نهایت، در صورت نیاز به امکانات و تجهیزات خاص در
+                        سکشن‌های مورد نظر، ما آمادگی داریم تا به شکلی موثر و
+                        کارآمد از این امکانات استفاده کنیم و آنها را در ریدیزاین
+                        سکشن‌ها گنجانیم.
+                      </p>
+                      <div class="frame-23"></div>
+                    </div>
+                    <div class="frame-24">
+                      <p class="text-wrapper-12">
+                        با توجه به این شرح و شاخص‌های مطرح شده، ما به عنوان تیم
+                        مهندسی عمران و معماری شرکت سپنتا، متعهد به ارائه
+                        راهکارهای مناسب و بهبودهای لازم هستیم تا اهداف و توقعات
+                        شما را برآورده سازیم.
+                      </p>
+                      <div class="frame-23"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- section before footer -->
+          <div class="overlap-wrapper mt-10 mb-10" id="section4">
+            <div class="overlap-2">
+              <div class="frame-25">
+                <div
+                  class="frame-8 mr-2 ml-2 mb-5 flex flex-col-reverse gap-10 md:flex-row"
+                >
+                  <div class="view-2">
+                    <div class="text-wrapper-4">
+                      <a
+                        href="./projects.html"
+                        style="text-decoration: none; color: black"
+                      >
+                        نمایش همه پروژه ها</a
+                      >
+                    </div>
+                  </div>
+                  <div class="frame-9 text-center">
+                    <div class="text-wrapper-5">
+                      پروژه های هلدینگ ساختمانی سپنتا
+                    </div>
+                    <p class="text-wrapper-6">
+                      مهندسین باتجربه سپنتا در تمامی مراحل پروژه کنار شما هستند.
+                    </p>
+                  </div>
+                </div>
+                <!-- 3 slides before footer -->
+                <section class="container-slide-project md:mt-10 mb-10">
+                  <div class="">
+                    <div
+                      class="cards flex flex-col gap-10 m-auto p-2 md:flex-row"
+                    >
+                      <div class="card">
+                        <div class="img-box">
+                          <img src="/assets/images/image 588 (1).png" alt="" />
+                        </div>
+                        <div>
+                          <div class="text-slide-project text-right">
+                            نمایش بیشتر
+                          </div>
+                        </div>
+                        <div class="card-content">
+                          <h1 class="card-heading">
+                            پروژه های طراحی نمای ساختمان
+                          </h1>
+                          <p class="card-text">
+                            با استفاده از تجربه، دانش و فناوری‌های پیشرفته،
+                            سپنتا سعی می‌کند طرح‌های نوآورانه، دقیق و با کیفیتی
+                            را برای مشتریان خود ارائه کند. این خدمات بهبود ظاهر
+                            و عملکرد ساختمان را به همراه دارند و با رعایت
+                            استانداردهای بین‌المللی و نیازهای مشتریان ارائه
+                            می‌شوند.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="img-box">
+                          <img src="/assets/images/image 587 (1).png" alt="" />
+                        </div>
+                        <div>
+                          <div class="text-slide-project text-right">
+                            نمایش بیشتر
+                          </div>
+                        </div>
+                        <div class="card-content">
+                          <h1 class="card-heading">پروژه های بازسازی بنا</h1>
+                          <p class="card-text">
+                            با استفاده از تجربه، دانش و فناوری‌های پیشرفته،
+                            سپنتا سعی می‌کند طرح‌های نوآورانه، دقیق و با کیفیتی
+                            را برای مشتریان خود ارائه کند. این خدمات بهبود ظاهر
+                            و عملکرد ساختمان را به همراه دارند و با رعایت
+                            استانداردهای بین‌المللی و نیازهای مشتریان ارائه
+                            می‌شوند.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="img-box">
+                          <img src="/assets/images/image 475.png" alt="" />
+                        </div>
+                        <div>
+                          <div class="text-slide-project text-right">
+                            نمایش بیشتر
+                          </div>
+                        </div>
+                        <div class="card-content">
+                          <h1 class="card-heading">
+                            پروژه های طراحی دکوراسیون داخلی
+                          </h1>
+                          <p class="card-text">
+                            با استفاده از تجربه، دانش و فناوری‌های پیشرفته،
+                            سپنتا سعی می‌کند طرح‌های نوآورانه، دقیق و با کیفیتی
+                            را برای مشتریان خود ارائه کند. این خدمات بهبود ظاهر
+                            و عملکرد ساختمان را به همراه دارند و با رعایت
+                            استانداردهای بین‌المللی و نیازهای مشتریان ارائه
+                            می‌شوند.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <!-- footer -->
+      <div class="" id="section5">
+        <section
+          class="flex flex-col-reverse w-full gap-10 p-10 xl:flex-row"
+          style="background-color: rgba(42, 40, 41, 1)"
+        >
+          <!-- دوتای چپ -->
+          <div
+            class="flex flex-col w-full gap-10 justify-around items-end sm:flex-row sm:gap-40 sm:items-start xl:flex-row"
+          >
+            <div
+              class="flex flex-row justify-center sm:w-full sm:justify-end xl:justify-end"
+            >
+              <div class="view-10 xl:w-full sm:w-full">
+                <div class="text-wrapper-17">درخواست پروژه</div>
+                <div class="frame-31">
+                  <button class="button">
+                    <div class="text-wrapper-18">نام و نام خانوادگی</div>
+                  </button>
+                  <button class="button">
+                    <div class="text-wrapper-18">شماره تماس</div>
+                  </button>
+                  <button class="button">
+                    <div class="text-wrapper-18">درخواست شما</div>
+                  </button>
+                  <button class="button-2">
+                    <div class="text-wrapper-19">ارسال درخواست پروژه</div>
+                  </button>
+                </div>
+                <div
+                  class="frame-9 w-full flex flex-col justify-start items-start"
+                >
+                  <p class="text-wrapper-20">
+                    ما رو در شبکه های اجتماعی دنبال کنید
+                  </p>
+                  <div class="frame-32">
+                    <div class="frame-33"></div>
+                    <div class="frame-34"></div>
+                    <div class="frame-35"></div>
+                    <div class="frame-36"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="view-11 w-full">
+              <div class="frame-37">
+                <div class="text-wrapper-17">آدرس و شماره تماس</div>
+              </div>
+              <div class="frame-38">
+                <div class="frame-41">
+                  <p class="text-wrapper-22">
+                    تهران ، آزادی ، نبش خیابان نمایندگی ، پلاک ۱<br />
+                    ساختمان پارس ۲، واحد ۱۰
+                  </p>
+                  <img class="img-2" src="/assets/images/location.svg" />
+                </div>
+                <div class="frame-41">
+                  <div class="text-wrapper-22">۰۲۱۶۶۰۰۴۱۷۵ - ۰۲۱۶۶۰۰۳۱۵۸</div>
+                  <img class="img-2" src="/assets/images/call (1).svg" />
+                </div>
+                <div class="frame-41">
+                  <div class="text-wrapper-22">۰۹۱۰۹۶۸۹۷۹۶</div>
+                  <img class="img-2" src="/assets/images/smartphone.svg" />
+                </div>
+                <div class="frame-41">
+                  <p class="text-wrapper-22">ساعت کاری: ۹ - ۱۷</p>
+                  <img class="img-2" src="/assets/images/progress_clock.svg" />
+                </div>
+                <div class="frame-41">
+                  <div class="text-wrapper-22">info@sepantaeng.com</div>
+                  <img class="img-2" src="/assets/images/email.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- دوتای اول -->
+          <div
+            class="flex flex-col-reverse w-full gap-12 justify-around sm:flex-col-reverse xl:flex-row"
+          >
+            <div class="view-11 w-full xl:items-end xl:pr-20">
+              <div class="text-wrapper-27">خدمات هلدینک سپنتا</div>
+              <div class="text-wrapper-26">خدمات طراحی</div>
+              <div class="text-wrapper-26">خدمات نظارت</div>
+              <div class="text-wrapper-26">خدمات اجرا</div>
+            </div>
+
+            <div class="view-11 w-full">
+              <div class="text-wrapper-27">درباره ما</div>
+
+              <p class="text-wrapper-28 w-full sm:w-full">
+                هلدینگ ساختمانی سپنتا تلاش می نماید با طراحی تخصصی پلان و نما با
+                ویژگی های معماری مدرن و کلاسیک و تهیه نقشه های فاز ۱و۲ و طراحی
+                داخلی، ایده آل های ذهنی کارفرمایان را در خلق ساختمان های لوکس و
+                منحصر بفرد محقق نماید و با بهینه ترین محاسبات و تامین حداکثر
+                پارکینگ به تعهدات خود بعنوان امین فنی و اقتصادی کارفرما جامه عمل
+                بپوشاند.
+              </p>
+            </div>
+          </div>
+        </section>
+        <p
+          class="text-center text-white text-sm"
+          style="background-color: rgba(42, 40, 41, 1)"
+        >
+          تمام حقوق برای هلدینگ ساختمانی سپنتا محفوظ است
+        </p>
+
+        <!-- to top page button -->
+        <button
+          class="arrow-upward-alt-wrapper"
+          onclick="topFunction()"
+          id="myBtn"
+          title="برو اول صفحه"
+        >
+          <img
+            class="arrow-upward-alt"
+            src="/assets/images/arrow_upward_alt.svg"
+          />
+        </button>
+      </div>
+      <!-- end section footer -->
+    </footer>
+
+    <script src="/index.js"></script>
+    <script src="/src/script/swiper-bundle.min.js"></script>
+    <script src="/src/script/src/script-swiper-slider.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var servicesButton = document.querySelector(
+          ".nav__link.dropdown__button.active"
+        );
+
+        servicesButton.addEventListener("click", function () {
+          // Toggle active class on the services button
+          this.classList.toggle("active");
+
+          // Change text color based on active class
+          if (this.classList.contains("active")) {
+            this.style.color = "#4d4d4d"; // Change to the desired color
+          } else {
+            this.style.color = "#f59115"; // Revert to the default color
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

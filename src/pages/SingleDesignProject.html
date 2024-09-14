@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تک پروژه طراحی - سپنتا</title>
+    <link rel="stylesheet" href="/src/css/style.css" />
+    <link href="/src/css/input.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/css/dakheli.css" />
+    <link rel="stylesheet" href="/src/css/footerAndnavbar.css" />
+    <link rel="stylesheet" href="/src/css/landing.css" />
+    <link rel="stylesheet" href="/src/css/imageViewer.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link rel="stylesheet" href="/src/css/swiper-bundle.min.css" />
+    <style>
+      /*=============== GOOGLE FONTS ===============*/
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+      /*=============== VARIABLES CSS ===============*/
+      :root {
+        --header-height: 3.5rem;
+        /*========== Colors ==========*/
+        /*Color mode HSL(hue, saturation, lightness)*/
+        --first-color: hsl(220, 68%, 54%);
+        --first-color-lighten: hsl(220, 68%, 97%);
+        --text-color: hsl(220, 12%, 45%);
+        --body-color: hsl(220, 100%, 99%);
+        /*========== Font and typography ==========*/
+        /*.5rem = 8px | 1rem = 16px ...*/
+        --normal-font-size: 0.938rem;
+        --small-font-size: 0.813rem;
+        --smaller-font-size: 0.75rem;
+        /*========== Font weight ==========*/
+        --font-medium: 500;
+        /*========== z index ==========*/
+        --z-tooltip: 10;
+        --z-fixed: 999;
+      }
+      @media screen and (min-width: 1024px) {
+        :root {
+          --normal-font-size: 1rem;
+          --small-font-size: 0.875rem;
+          --smaller-font-size: 0.813rem;
+        }
+      }
+
+      /*=============== BASE ===============*/
+
+      ul {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      /*=============== REUSABLE CSS CLASSES ===============*/
+
+      /*=============== HEADER ===============*/
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 2px 8px hsla(220, 68%, 12%, 0.1);
+        backdrop-filter: blur(20px) brightness(100%);
+        z-index: var(--z-fixed);
+        background-color: rgba(223, 223, 223, 1);
+      }
+
+      /*=============== NAV ===============*/
+      .nav {
+        height: var(--header-height);
+      }
+      .nav__data {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav__logo {
+        display: inline-flex;
+        align-items: center;
+        column-gap: 0.25rem;
+        color: var(--title-color);
+        font-weight: var(--font-semi-bold);
+        transition: color 0.3s;
+        margin-right: 3rem;
+      }
+      .nav__logo i {
+        font-size: 1.25rem;
+      }
+      .nav__logo:hover {
+        color: var(--first-color);
+      }
+      .nav__toggle {
+        position: relative;
+        width: 32px;
+        height: 32px;
+      }
+      .nav__toggle-menu,
+      .nav__toggle-close {
+        font-size: 1.25rem;
+        color: #f59115;
+        position: absolute;
+        display: grid;
+        place-items: center;
+        inset: 0;
+        cursor: pointer;
+        transition: opacity 0.1s, transform 0.4s;
+      }
+      .nav__toggle-close {
+        opacity: 0;
+      }
+      @media screen and (max-width: 1118px) {
+        .dropdown__content {
+          padding: 20px;
+        }
+        .nav__menu {
+          background-color: rgba(223, 223, 223, 0.44);
+          backdrop-filter: blur(20px) brightness(100%);
+          box-shadow: blur(20px);
+          position: absolute;
+          right: 0;
+          top: 2.5rem;
+          height: calc(100vh - 3.5rem);
+          overflow: auto;
+          padding-block: 1.5rem 4rem;
+          pointer-events: none;
+          opacity: 0;
+          transition: top 0.4s, opacity 0.3s;
+        }
+        .image__dropdown {
+          display: none;
+        }
+        .nav__logo {
+          margin-left: 0;
+        }
+
+        .nav__menu::-webkit-scrollbar {
+          width: 0.5rem;
+        }
+        .nav__menu::-webkit-scrollbar-thumb {
+          background-color: hsl(220, 12%, 70%);
+        }
+      }
+      .nav__link {
+        color: var(--title-color);
+        font-weight: var(--font-semi-bold);
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.2s;
+        justify-content: right;
+      }
+      .nav__link:hover {
+        color: #ec860aa8;
+      }
+
+      /* Show menu */
+      .show-menu {
+        opacity: 1;
+        top: 3.5rem;
+        pointer-events: initial;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+
+      /* Show icon */
+      .show-icon .nav__toggle-menu {
+        opacity: 0;
+        transform: rotate(90deg);
+      }
+
+      .show-icon .nav__toggle-close {
+        opacity: 1;
+        transform: rotate(90deg);
+      }
+
+      /*=============== DROPDOWN ===============*/
+      .dropdown__button {
+        cursor: pointer;
+      }
+
+      .dropdown__arrow {
+        font-size: 1.5rem;
+        font-weight: initial;
+        transition: transform 0.4s;
+      }
+      .dropdown__content,
+      .dropdown__group,
+      .dropdown__list {
+        display: grid;
+      }
+      .dropdown__container {
+        /* background-color: var(--first-color-lighten); */
+        height: 0;
+        overflow: hidden;
+        transition: height 0.4s;
+        /* background-image: url(/assets/images/aparteman.png); */
+        text-align: right;
+        display: flex;
+        justify-content: end;
+        opacity: 1;
+      }
+      .dropdown__content {
+        row-gap: 1.75rem;
+      }
+      .dropdown__group {
+        padding-left: 2.5rem;
+        row-gap: 0.5rem;
+        text-align: right;
+      }
+      .dropdown__group:first-child {
+        margin-top: 1.25rem;
+      }
+      .dropdown__group:last-child {
+        margin-bottom: 1.25rem;
+      }
+      .dropdown__icon i {
+        font-size: 1.25rem;
+        color: #f59115;
+      }
+      .dropdown__title {
+        font-size: var(--small-font-size);
+        font-weight: var(--font-semi-bold);
+        color: var(--title-color);
+        direction: rtl;
+        text-align: right;
+      }
+      .dropdown__list {
+        row-gap: 0.25rem;
+      }
+      .dropdown__link {
+        font-size: var(--smaller-font-size);
+        font-weight: var(--font-medium);
+        color: var(--text-color);
+        transition: color 0.3s;
+      }
+      .dropdown__link:hover {
+        color: var(--title-color);
+        color: #f59115;
+      }
+
+      /* Rotate dropdown icon */
+      .show-dropdown .dropdown__arrow {
+        transform: rotate(180deg);
+      }
+
+      /*=============== BREAKPOINTS ===============*/
+      /* For small devices */
+      @media screen and (max-width: 300px) {
+        .dropdown__group {
+          padding-left: 1.5rem;
+        }
+        .dropdown__container {
+          background-image: none;
+        }
+      }
+      /* For large devices */
+      @media screen and (min-width: 1118px) {
+        /* Nav */
+        .nav {
+          height: calc(var(--header-height) + 2rem);
+          display: flex;
+          justify-content: space-between;
+        }
+        .nav__toggle {
+          display: none;
+        }
+        .nav__list {
+          column-gap: 3rem;
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
+        .nav__menu {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+        .nav li {
+          display: flex;
+        }
+        .nav__link {
+          padding: 0;
+        }
+        /* Dropdown */
+        .dropdown__button {
+          column-gap: 0.25rem;
+          pointer-events: none;
+        }
+        .dropdown__container {
+          direction: rtl;
+          height: max-content;
+          text-align: right;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 6.5rem;
+          background-image: none;
+          /* background-color: var(--body-color); */
+          box-shadow: 0 6px 8px hsla(220, 68%, 12%, 0.05);
+          pointer-events: none;
+          opacity: 0;
+          transition: top 0.4s, opacity 0.5s;
+          display: flex;
+          justify-content: end;
+        }
+        .dropdown__content {
+          grid-template-columns: repeat(4, max-content);
+          column-gap: 10rem;
+        }
+        .dropdown__group {
+          align-content: baseline;
+          row-gap: 1.25rem;
+        }
+        .dropdown__group:first-child,
+        .dropdown__group:last-child {
+          margin: 0;
+        }
+        .dropdown__list {
+          row-gap: 0.75rem;
+        }
+        .dropdown__icon {
+          width: 60px;
+          height: 60px;
+          background-color: var(--first-color-lighten);
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+          margin-bottom: 1rem;
+        }
+        .dropdown__icon i {
+          font-size: 2rem;
+        }
+        .dropdown__title {
+          font-size: var(--normal-font-size);
+        }
+        .dropdown__link {
+          font-size: var(--small-font-size);
+        }
+        .dropdown__link:hover {
+          color: var(--first-color);
+          color: #f59115;
+        }
+        .dropdown__item {
+          cursor: pointer;
+        }
+        .dropdown__item:hover .dropdown__arrow {
+          transform: rotate(180deg);
+          color: #f59115;
+        }
+        .dropdown__item:hover > .dropdown__container {
+          top: 4.5rem;
+          background-color: white;
+          opacity: 1;
+          pointer-events: initial;
+          cursor: initial;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+            rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+            rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          background-image: url(/assets/images/aparteman.png);
+          background-size: cover;
+        }
+      }
+
+      @media screen and (min-width: 1152px) {
+        .container {
+          margin-inline: auto;
+        }
+      }
+      @media (max-width: 640px) {
+        .hidden {
+          display: none !important;
+        }
+
+        .md\\:hidden {
+          display: block !important;
+        }
+
+        .sm\\:flex {
+          display: none !important;
+        }
+
+        /* Adjust styles for mobile navigation */
+        .navigation {
+          flex-direction: column;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 1000;
+          display: none;
+          float: right;
+        }
+
+        .navigation.active {
+          display: flex;
+        }
+        .mobile-header {
+          height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+ <header class="header" id="navbar">
+      <nav class="nav flex-row-reverse">
+        <div class="nav__data">
+          <a href="landing.html" class="nav__logo">
+            <img
+              src="/assets/images/logo.png"
+              class="w-12 md:w-14 xl:w-20"
+              srcset=""
+            />
+          </a>
+
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line nav__toggle-menu"></i>
+            <i class="ri-close-line nav__toggle-close"></i>
+          </div>
+        </div>
+
+        <!--=============== NAV MENU ===============-->
+        <div class="nav__menu w-full sm:w-1/2 md:w-1/3" id="nav-menu">
+          <ul class="nav__list">
+            <li>
+              <a
+                href="blog.html"
+                class="nav__link"
+                style="text-decoration: none"
+                >وبلاگ</a
+              >
+            </li>
+            <li>
+              <a
+                href="contactWithUs.html"
+                class="nav__link"
+                style="text-decoration: none"
+                >تماس با ما</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="projects.html"
+                class="nav__link"
+                style="text-decoration: none"
+                >پروژه ها</a
+              >
+            </li>
+            <li class="dropdown__item">
+              <div
+                class="nav__link dropdown__button active"
+                style="text-decoration: none; direction: rtl"
+              >
+                خدمات ما<i class="ri-arrow-down-s-line dropdown__arrow"></i>
+              </div>
+              <div class="dropdown__container flex flex-row justify-between">
+                <div class="dropdown__content p-10">
+                  <div class="dropdown__group">
+                    <span class="dropdown__title">طراحی</span>
+                    <ul class="dropdown__list">
+                      <li>
+                        <a href="inside-decoration.html" class="dropdown__link"
+                          >طراحی دکراسیون داخلی</a
+                        >
+                      </li>
+                      <li>
+                        <a href="outside-decoration.html" class="dropdown__link"
+                          >طراحی نمای ساختمان</a
+                        >
+                      </li>
+                      <li>
+                        <a href="javaaz.html" class="dropdown__link">
+                          اخذ جواز</a
+                        >
+                      </li>
+                      <li>
+                        <a href="" class="dropdown__link"> طراحی فاز ۱</a>
+                      </li>
+                      <li>
+                        <a href="#" class="dropdown__link"> طراحی فاز ۲</a>
+                      </li>
+                      <li><a href="#" class="dropdown__link"> ازبیلت </a></li>
+                      <li><a href="#" class="dropdown__link"> بازسازی </a></li>
+                    </ul>
+                  </div>
+                  <div class="dropdown__group">
+                    <span class="dropdown__title">نظارت</span>
+                    <ul class="dropdown__list">
+                      <li>
+                        <a href="#" class="dropdown__link"> نظارت انتخابی</a>
+                      </li>
+                      <li>
+                        <a href="#" class="dropdown__link">استحکام بنا </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="dropdown__group">
+                    <span class="dropdown__title">اجرا</span>
+                    <ul class="dropdown__list">
+                      <li>
+                        <a href="#" class="dropdown__link"> مشارکت در ساخت</a>
+                      </li>
+                      <li>
+                        <a href="#" class="dropdown__link"> مدیریت پیمان </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="image__dropdown relative p-10">
+                  <img
+                    src="/assets/images/services.png"
+                    width="420px"
+                    height="200px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section
+      style="background-image: url(/assets/images/image\ 650.png); width: 100%"
+    >
+      <!-- breadcrump -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-32 ml-24 mb-10">
+          <li class="breadcrumb-item active" aria-current="page">نام پروژه</li>
+          <li class="breadcrumb-item">
+            <a href="#"> پروژه های مسکونی</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="#">پروژه های طراحی دکوراسیون داخلی</a>
+          </li>
+
+          <li class="breadcrumb-item"><a href="#">صفحه اصلی</a></li>
+        </ol>
+
+        <div class="relative float-right mr-10">
+          <button
+            id="nextBtn"
+            style="
+              background-color: rgba(64, 64, 64, 1);
+              width: 128px;
+              height: 48px;
+              color: white;
+              border-radius: 3%;
+            "
+          >
+            بعدی
+          </button>
+          <button
+            id="prevBtn"
+            style="
+              background-color: rgba(227, 200, 99, 0.5);
+              width: 128px;
+              height: 48px;
+              border-radius: 3%;
+            "
+          >
+            قبلی
+          </button>
+          <div
+            style="background-color: rgba(217, 217, 217, 0.61)"
+            class="mt-10 text-right"
+          >
+            <p class="p-5">پروژه</p>
+            <hr
+              style="
+                height: 1px;
+                background-color: #f59115;
+                border: none;
+                width: 50%;
+                float: right;
+              "
+            />
+            <p class="p-5 text-right">زیر بنا</p>
+          </div>
+        </div>
+      </nav>
+
+      <!--image viewer -->
+      <img src="/assets/images/مسکونی.png" id="main" />
+      <div id="thumbnails">
+        <img src="/assets/images/مسکونی.png" />
+        <img src="/assets/images/art3.png" />
+        <img src="/assets/images/art9.png" />
+        <img src="/assets/images/art8.png" />
+        <img src="/assets/images/art6.png" />
+      </div>
+    </section>
+
+    <!-- information -->
+    <section style="background-color: rgba(223, 223, 223, 1); width: 100%">
+      <div style="color: rgba(32, 32, 32, 1)" class="text-right p-16">
+        <p class="mb-5">اطلاعات پروژه طراحی و نظارت واجرای کامل ویلای</p>
+        <p class="mb-2">نام پروژه</p>
+        <p class="mb-5">متراژ پروژه</p>
+        <p class="mb-5">مراحل عملیاتی پروژه</p>
+        <p class="mb-2">زمان شروع</p>
+        <p class="mb-5">زمان پایان</p>
+        <p>تعداد افراد درگیر در پروژه</p>
+      </div>
+    </section>
+
+    <!-- same projects -->
+    <section id="section3" class="mb-20 mt-10">
+      <p class="text-right pr-16">پروژه های مشابه</p>
+      <div class="">
+        <div class="wrapper-sameProjects" id="image-container">
+          <div class="box-sameProjects" data-category="Residential-projects">
+            <img src="/assets/images/art8.png" alt="" />
+            <div class="intro-sameProject">
+              <h3>پروژه طراحی</h3>
+              <p>نمایش بیشتر</p>
+              <div></div>
+            </div>
+          </div>
+          <div class="box-sameProjects" data-category="Residential-projects">
+            <img src="/assets/images/art7.png" alt="" />
+            <div class="intro-sameProject">
+              <h3>پروژه طراحی</h3>
+              <p>نمایش بیشتر</p>
+              <div></div>
+            </div>
+          </div>
+          <div class="box-sameProjects" data-category="Residential-projects">
+            <img src="/assets/images/pic3.png" alt="" />
+            <div class="intro-sameProject">
+              <h3>پروژه طراحی</h3>
+              <p>نمایش بیشتر</p>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="pagination-buttons">
+        <div id="prevPageBtn" class="relative float-left">
+          <i
+            class="fa fa-chevron-circle-left text-gray-600"
+            style="font-size: 24px"
+          ></i>
+        </div>
+        <div id="nextPageBtn" class="relative float-right">
+          <i
+            class="fa fa-chevron-circle-right text-gray-600"
+            style="font-size: 24px"
+          ></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- box before footer  دیدگاه-->
+    <section class="mt-10 mb-10">
+      <div
+        class="p-8 flex flex-col gap-2 items-center justify-start relative"
+        style="background-color: rgba(203, 203, 203, 0.3)"
+      >
+        <div
+          class="rounded shrink-0 relative overflow-hidden"
+          style="
+            width: 80%;
+            height: 480px;
+            background-color: #2a2829;
+            border: 20px solid white;
+          "
+        >
+          <div class="text-white text-right text-lg font-normal m-8">
+            اطلاعات تماس با هلدینک ساختمانی سپنتا
+          </div>
+          <!-- information -->
+          <div class="flex flex-col items-start gap-6 justify-start m-10">
+            <div
+              class="relative flex flex-row gap-4 items-center justify-start self-stretch shrink-0"
+            >
+              <svg
+                class="shrink-0 relative overflow-visible w-8 h-8"
+                viewBox="0 0 33 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.1667 5.33333C21.1667 6.93333 20.9 8.66667 20.3667 10.1333C20.3667 10.2667 20.3667 10.4 20.3667 10.5333C20.3667 10.9333 20.5 11.2 20.7667 11.4667L23.7 14.4C21.7 18.1333 18.6333 21.3333 14.9 23.2L11.9667 20.2667C11.5667 19.8667 11.0333 19.7333 10.6333 20C9.16667 20.4 7.43333 20.6667 5.83333 20.6667C5.16667 20.6667 4.5 21.3333 4.5 22V26.6667C4.5 27.3333 5.16667 28 5.83333 28C18.3667 28 28.5 17.8667 28.5 5.33333C28.5 4.66667 27.8333 4 27.1667 4H22.5C21.8333 4 21.1667 4.66667 21.1667 5.33333ZM7.52525 25.302C7.332 25.3209 7.16667 25.1675 7.16667 24.9734V23.93C7.16667 23.5903 7.42229 23.3061 7.75847 23.2573C8.62282 23.1319 9.47572 22.9483 10.2669 22.7569C10.4945 22.7018 10.7347 22.768 10.9002 22.9336L11.852 23.8853C12.0272 24.0605 11.9566 24.3584 11.7199 24.4317C10.3779 24.8471 8.95468 25.1622 7.52525 25.302ZM25.4734 6.66667C25.6675 6.66667 25.8209 6.832 25.802 7.02525C25.6622 8.45468 25.3471 9.87786 24.9317 11.2199C24.8584 11.4566 24.5605 11.5272 24.3853 11.352L23.4336 10.4002C23.268 10.2347 23.2019 9.99453 23.2567 9.76684C23.4414 8.99834 23.6113 8.17159 23.6742 7.33269C23.7018 6.96553 23.9985 6.66667 24.3667 6.66667H25.4734Z"
+                  fill="#EDEDED"
+                />
+              </svg>
+              <div
+                class="relative text-right text-lg font-normal"
+                style="color: #ededed"
+              >
+                ۰۲۱۶۶۰۰۴۱۷۵ - ۰۲۱۶۶۰۰۳۱۵۸
+              </div>
+            </div>
+            <div
+              class="relative flex flex-row gap-4 items-center justify-start self-stretch shrink-0"
+            >
+              <svg
+                class="smartphone-iphone"
+                width="33"
+                height="32"
+                viewBox="0 0 33 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.4438 29.3337C9.77711 29.3337 9.2066 29.0965 8.73226 28.6221C8.25711 28.147 8.01953 27.5761 8.01953 26.9094V5.09123C8.01953 4.42457 8.25711 3.85366 8.73226 3.37851C9.2066 2.90416 9.77711 2.66699 10.4438 2.66699H22.565C23.2317 2.66699 23.8026 2.90416 24.2777 3.37851C24.7521 3.85366 24.9892 4.42457 24.9892 5.09123V26.9094C24.9892 27.5761 24.7521 28.147 24.2777 28.6221C23.8026 29.0965 23.2317 29.3337 22.565 29.3337H10.4438ZM10.4438 23.2731V26.2428C10.4438 26.6109 10.7423 26.9094 11.1104 26.9094H21.8983C22.2665 26.9094 22.565 26.6109 22.565 26.2428V23.2731H10.4438ZM16.5044 26.3034C16.8478 26.3034 17.1359 26.187 17.3686 25.9543C17.6005 25.7223 17.7165 25.4347 17.7165 25.0912C17.7165 24.7478 17.6005 24.4601 17.3686 24.2282C17.1359 23.9955 16.8478 23.8791 16.5044 23.8791C16.1609 23.8791 15.8733 23.9955 15.6413 24.2282C15.4086 24.4601 15.2923 24.7478 15.2923 25.0912C15.2923 25.4347 15.4086 25.7223 15.6413 25.9543C15.8733 26.187 16.1609 26.3034 16.5044 26.3034ZM10.4438 20.8488H22.565V8.7276H10.4438V20.8488ZM10.4438 6.30336H22.565V5.7579C22.565 5.38971 22.2665 5.09123 21.8983 5.09123H11.1104C10.7423 5.09123 10.4438 5.38971 10.4438 5.7579V6.30336Z"
+                  fill="#EDEDED"
+                />
+              </svg>
+              <div
+                class="relative text-right text-lg font-normal"
+                style="color: #ededed"
+              >
+                ۰۹۱۰۹۶۸۹۷۹۶
+              </div>
+            </div>
+            <div
+              class="relative flex flex-row gap-4 items-center justify-start self-stretch shrink-0"
+            >
+              <svg
+                class="location"
+                width="33"
+                height="32"
+                viewBox="0 0 33 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.5007 16.0003C17.234 16.0003 17.862 15.739 18.3847 15.2163C18.9064 14.6945 19.1673 14.067 19.1673 13.3337C19.1673 12.6003 18.9064 11.9723 18.3847 11.4497C17.862 10.9279 17.234 10.667 16.5007 10.667C15.7673 10.667 15.1398 10.9279 14.618 11.4497C14.0953 11.9723 13.834 12.6003 13.834 13.3337C13.834 14.067 14.0953 14.6945 14.618 15.2163C15.1398 15.739 15.7673 16.0003 16.5007 16.0003ZM16.5007 25.8003C19.2118 23.3114 21.2229 21.0501 22.534 19.0163C23.8451 16.9834 24.5007 15.1781 24.5007 13.6003C24.5007 11.1781 23.7282 9.19455 22.1833 7.64966C20.6393 6.10566 18.7451 5.33366 16.5007 5.33366C14.2562 5.33366 12.3615 6.10566 10.8167 7.64966C9.27265 9.19455 8.50065 11.1781 8.50065 13.6003C8.50065 15.1781 9.15621 16.9834 10.4673 19.0163C11.7784 21.0501 13.7895 23.3114 16.5007 25.8003ZM16.5007 28.8337C16.3229 28.8337 16.1451 28.8003 15.9673 28.7337C15.7895 28.667 15.634 28.5781 15.5007 28.467C12.2562 25.6003 9.83398 22.9394 8.23398 20.4843C6.63398 18.0283 5.83398 15.7337 5.83398 13.6003C5.83398 10.267 6.90643 7.61144 9.05132 5.63366C11.1953 3.65588 13.6784 2.66699 16.5007 2.66699C19.3229 2.66699 21.806 3.65588 23.95 5.63366C26.0949 7.61144 27.1673 10.267 27.1673 13.6003C27.1673 15.7337 26.3673 18.0283 24.7673 20.4843C23.1673 22.9394 20.7451 25.6003 17.5007 28.467C17.3673 28.5781 17.2118 28.667 17.034 28.7337C16.8562 28.8003 16.6784 28.8337 16.5007 28.8337Z"
+                  fill="#EDEDED"
+                />
+              </svg>
+              <div
+                class="relative text-right text-lg font-normal"
+                style="color: #ededed"
+              >
+                تهران ، آزادی، نبش خیابان نمایندگی، پلاک ۱، ساختمان پارس ۲، واحد
+                ۱۰
+              </div>
+            </div>
+            <div
+              class="relative flex flex-row gap-4 items-center justify-start self-stretch shrink-0"
+            >
+              <svg
+                class="email"
+                width="33"
+                height="32"
+                viewBox="0 0 33 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.83268 26.6663C5.09935 26.6663 4.47179 26.4055 3.95002 25.8837C3.42735 25.361 3.16602 24.733 3.16602 23.9997V7.99967C3.16602 7.26634 3.42735 6.63879 3.95002 6.11701C4.47179 5.59434 5.09935 5.33301 5.83268 5.33301H27.166C27.8993 5.33301 28.5273 5.59434 29.05 6.11701C29.5718 6.63879 29.8327 7.26634 29.8327 7.99967V23.9997C29.8327 24.733 29.5718 25.361 29.05 25.8837C28.5273 26.4055 27.8993 26.6663 27.166 26.6663H5.83268ZM27.166 10.6663L17.1993 16.8997C17.0882 16.9663 16.9713 17.0161 16.8487 17.049C16.7269 17.0828 16.6105 17.0997 16.4993 17.0997C16.3882 17.0997 16.2718 17.0828 16.15 17.049C16.0273 17.0161 15.9105 16.9663 15.7993 16.8997L5.83268 10.6663V23.333C5.83268 23.7012 6.13116 23.9997 6.49935 23.9997H26.4993C26.8675 23.9997 27.166 23.7012 27.166 23.333V10.6663ZM16.4993 14.6663L27.166 7.99967H5.83268L16.4993 14.6663ZM5.83268 10.9997V9.03301V9.06634V9.04901V10.9997Z"
+                  fill="#EDEDED"
+                />
+              </svg>
+              <div
+                class="relative text-right text-lg font-normal"
+                style="color: #ededed"
+              >
+                info@sepantaeng.com
+              </div>
+            </div>
+          </div>
+          <!-- social media address -->
+          <div
+            class="mr-8 flex flex-row gap-6 items-start justify-start"
+            style="top: 374px"
+          >
+            <div class="shrink-0 w-8 relative">
+              <svg
+                class="instagram p-1 relative right-0 left-0 bottom-0 top-0 transform translate-x-0 translate-y-0 overflow-visible"
+                width="33"
+                height="32"
+                viewBox="0 0 33 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.5006 2.66699C12.8795 2.66699 12.425 2.68281 11.0028 2.74749C9.58331 2.81244 8.61441 3.037 7.76661 3.36649C6.88967 3.70679 6.14576 4.16201 5.40465 4.90285C4.66298 5.64343 4.20741 6.38677 3.86575 7.26279C3.53518 8.11023 3.31017 9.07868 3.2463 10.4965C3.18269 11.9177 3.16602 12.3721 3.16602 15.9906C3.16602 19.609 3.18213 20.0617 3.24657 21.4829C3.31186 22.9013 3.53658 23.8695 3.86602 24.7167C4.20686 25.593 4.66242 26.3363 5.40381 27.0769C6.14466 27.818 6.88855 28.2744 7.76495 28.6147C8.61328 28.9441 9.58248 29.1687 11.0016 29.2337C12.4239 29.2983 12.8781 29.3141 16.4989 29.3141C20.1204 29.3141 20.5734 29.2983 21.9957 29.2336C23.4151 29.1687 24.3851 28.9441 25.2335 28.6146C26.1101 28.2744 26.8529 27.818 27.5938 27.0769C28.3354 26.3363 28.791 25.593 29.1327 24.717C29.4605 23.8695 29.6855 22.9011 29.7521 21.4832C29.816 20.062 29.8327 19.609 29.8327 15.9906C29.8327 12.3721 29.816 11.918 29.7521 10.4968C29.6855 9.0784 29.4605 8.11023 29.1327 7.26308C28.791 6.38677 28.3354 5.64342 27.5938 4.90285C26.8521 4.16172 26.1104 3.70651 25.2326 3.36648C24.3826 3.037 23.4132 2.81244 21.9937 2.74749C20.5715 2.68281 20.1187 2.66699 16.4964 2.66699H16.5006ZM15.3045 5.06802C15.6595 5.06746 16.0556 5.06802 16.5006 5.06802C20.0606 5.06802 20.4826 5.08078 21.8884 5.14462C23.1884 5.20403 23.894 5.42108 24.364 5.60345C24.9862 5.84494 25.4299 6.13362 25.8963 6.59994C26.3629 7.06628 26.6518 7.51039 26.894 8.13215C27.0765 8.60125 27.294 9.30629 27.3532 10.6053C27.4171 12.0099 27.431 12.4318 27.431 15.9875C27.431 19.5432 27.4171 19.9652 27.3532 21.3697C27.2938 22.6687 27.0765 23.3738 26.894 23.8429C26.6524 24.4646 26.3629 24.9074 25.8963 25.3734C25.4296 25.8397 24.9865 26.1284 24.364 26.3699C23.8946 26.5531 23.1884 26.7696 21.8884 26.829C20.4829 26.8929 20.0606 26.9067 16.5006 26.9067C12.9403 26.9067 12.5183 26.8929 11.1128 26.829C9.81276 26.7691 9.1072 26.552 8.63691 26.3696C8.01468 26.1281 7.57022 25.8395 7.10356 25.3731C6.63689 24.9068 6.348 24.4638 6.10577 23.8418C5.92326 23.3727 5.70576 22.6676 5.6466 21.3686C5.58271 19.964 5.56993 19.5421 5.56993 15.9842C5.56993 12.4262 5.58271 12.0065 5.6466 10.602C5.70605 9.30296 5.92326 8.59793 6.10577 8.12827C6.34743 7.5065 6.63689 7.06239 7.10356 6.59606C7.57022 6.12973 8.01468 5.84106 8.63691 5.59902C9.10691 5.41581 9.81276 5.19931 11.1128 5.13962C12.3428 5.08411 12.8195 5.06746 15.3045 5.06467L15.3045 5.06802ZM23.6179 7.28028C22.7346 7.28028 22.0179 7.99559 22.0179 8.87855C22.0179 9.76124 22.7346 10.4774 23.6179 10.4774C24.5012 10.4774 25.2179 9.76124 25.2179 8.87855C25.2179 7.99587 24.5012 7.28028 23.6179 7.28028ZM16.5006 9.14835C12.7192 9.14835 9.65331 12.2119 9.65331 15.9906C9.65331 19.7692 12.7192 22.8314 16.5006 22.8314C20.282 22.8314 23.3468 19.7692 23.3468 15.9906C23.3468 12.2119 20.282 9.14835 16.5006 9.14835ZM16.5006 11.5494C18.9551 11.5494 20.9451 13.5376 20.9451 15.9906C20.9451 18.4432 18.9551 20.4318 16.5006 20.4318C14.0459 20.4318 12.0561 18.4432 12.0561 15.9906C12.0561 13.5376 14.0459 11.5494 16.5006 11.5494Z"
+                  fill="#F59115"
+                />
+                <path
+                  d="M16.5006 2.66699C12.8795 2.66699 12.425 2.68281 11.0028 2.74749C9.58331 2.81244 8.61441 3.037 7.76661 3.36649C6.88967 3.70679 6.14576 4.16201 5.40465 4.90285C4.66298 5.64343 4.20741 6.38677 3.86575 7.26279C3.53518 8.11023 3.31017 9.07868 3.2463 10.4965C3.18269 11.9177 3.16602 12.3721 3.16602 15.9906C3.16602 19.609 3.18213 20.0617 3.24657 21.4829C3.31186 22.9013 3.53658 23.8695 3.86602 24.7167C4.20686 25.593 4.66242 26.3363 5.40381 27.0769C6.14466 27.818 6.88855 28.2744 7.76495 28.6147C8.61328 28.9441 9.58248 29.1687 11.0016 29.2337C12.4239 29.2983 12.8781 29.3141 16.4989 29.3141C20.1204 29.3141 20.5734 29.2983 21.9957 29.2336C23.4151 29.1687 24.3851 28.9441 25.2335 28.6146C26.1101 28.2744 26.8529 27.818 27.5938 27.0769C28.3354 26.3363 28.791 25.593 29.1327 24.717C29.4605 23.8695 29.6855 22.9011 29.7521 21.4832C29.816 20.062 29.8327 19.609 29.8327 15.9906C29.8327 12.3721 29.816 11.918 29.7521 10.4968C29.6855 9.0784 29.4605 8.11023 29.1327 7.26308C28.791 6.38677 28.3354 5.64342 27.5938 4.90285C26.8521 4.16172 26.1104 3.70651 25.2326 3.36648C24.3826 3.037 23.4132 2.81244 21.9937 2.74749C20.5715 2.68281 20.1187 2.66699 16.4964 2.66699H16.5006ZM15.3045 5.06802C15.6595 5.06746 16.0556 5.06802 16.5006 5.06802C20.0606 5.06802 20.4826 5.08078 21.8884 5.14462C23.1884 5.20403 23.894 5.42108 24.364 5.60345C24.9862 5.84494 25.4299 6.13362 25.8963 6.59994C26.3629 7.06628 26.6518 7.51039 26.894 8.13215C27.0765 8.60125 27.294 9.30629 27.3532 10.6053C27.4171 12.0099 27.431 12.4318 27.431 15.9875C27.431 19.5432 27.4171 19.9652 27.3532 21.3697C27.2938 22.6687 27.0765 23.3738 26.894 23.8429C26.6524 24.4646 26.3629 24.9074 25.8963 25.3734C25.4296 25.8397 24.9865 26.1284 24.364 26.3699C23.8946 26.5531 23.1884 26.7696 21.8884 26.829C20.4829 26.8929 20.0606 26.9067 16.5006 26.9067C12.9403 26.9067 12.5183 26.8929 11.1128 26.829C9.81276 26.7691 9.1072 26.552 8.63691 26.3696C8.01468 26.1281 7.57022 25.8395 7.10356 25.3731C6.63689 24.9068 6.348 24.4638 6.10577 23.8418C5.92326 23.3727 5.70576 22.6676 5.6466 21.3686C5.58271 19.964 5.56993 19.5421 5.56993 15.9842C5.56993 12.4262 5.58271 12.0065 5.6466 10.602C5.70605 9.30296 5.92326 8.59793 6.10577 8.12827C6.34743 7.5065 6.63689 7.06239 7.10356 6.59606C7.57022 6.12973 8.01468 5.84106 8.63691 5.59902C9.10691 5.41581 9.81276 5.19931 11.1128 5.13962C12.3428 5.08411 12.8195 5.06746 15.3045 5.06467L15.3045 5.06802ZM23.6179 7.28028C22.7346 7.28028 22.0179 7.99559 22.0179 8.87855C22.0179 9.76124 22.7346 10.4774 23.6179 10.4774C24.5012 10.4774 25.2179 9.76124 25.2179 8.87855C25.2179 7.99587 24.5012 7.28028 23.6179 7.28028ZM16.5006 9.14835C12.7192 9.14835 9.65331 12.2119 9.65331 15.9906C9.65331 19.7692 12.7192 22.8314 16.5006 22.8314C20.282 22.8314 23.3468 19.7692 23.3468 15.9906C23.3468 12.2119 20.282 9.14835 16.5006 9.14835ZM16.5006 11.5494C18.9551 11.5494 20.9451 13.5376 20.9451 15.9906C20.9451 18.4432 18.9551 20.4318 16.5006 20.4318C14.0459 20.4318 12.0561 18.4432 12.0561 15.9906C12.0561 13.5376 14.0459 11.5494 16.5006 11.5494Z"
+                  fill="#F59115"
+                />
+                <path
+                  d="M16.5006 2.66699C12.8795 2.66699 12.425 2.68281 11.0028 2.74749C9.58331 2.81244 8.61441 3.037 7.76661 3.36649C6.88967 3.70679 6.14576 4.16201 5.40465 4.90285C4.66298 5.64343 4.20741 6.38677 3.86575 7.26279C3.53518 8.11023 3.31017 9.07868 3.2463 10.4965C3.18269 11.9177 3.16602 12.3721 3.16602 15.9906C3.16602 19.609 3.18213 20.0617 3.24657 21.4829C3.31186 22.9013 3.53658 23.8695 3.86602 24.7167C4.20686 25.593 4.66242 26.3363 5.40381 27.0769C6.14466 27.818 6.88855 28.2744 7.76495 28.6147C8.61328 28.9441 9.58248 29.1687 11.0016 29.2337C12.4239 29.2983 12.8781 29.3141 16.4989 29.3141C20.1204 29.3141 20.5734 29.2983 21.9957 29.2336C23.4151 29.1687 24.3851 28.9441 25.2335 28.6146C26.1101 28.2744 26.8529 27.818 27.5938 27.0769C28.3354 26.3363 28.791 25.593 29.1327 24.717C29.4605 23.8695 29.6855 22.9011 29.7521 21.4832C29.816 20.062 29.8327 19.609 29.8327 15.9906C29.8327 12.3721 29.816 11.918 29.7521 10.4968C29.6855 9.0784 29.4605 8.11023 29.1327 7.26308C28.791 6.38677 28.3354 5.64342 27.5938 4.90285C26.8521 4.16172 26.1104 3.70651 25.2326 3.36648C24.3826 3.037 23.4132 2.81244 21.9937 2.74749C20.5715 2.68281 20.1187 2.66699 16.4964 2.66699H16.5006ZM15.3045 5.06802C15.6595 5.06746 16.0556 5.06802 16.5006 5.06802C20.0606 5.06802 20.4826 5.08078 21.8884 5.14462C23.1884 5.20403 23.894 5.42108 24.364 5.60345C24.9862 5.84494 25.4299 6.13362 25.8963 6.59994C26.3629 7.06628 26.6518 7.51039 26.894 8.13215C27.0765 8.60125 27.294 9.30629 27.3532 10.6053C27.4171 12.0099 27.431 12.4318 27.431 15.9875C27.431 19.5432 27.4171 19.9652 27.3532 21.3697C27.2938 22.6687 27.0765 23.3738 26.894 23.8429C26.6524 24.4646 26.3629 24.9074 25.8963 25.3734C25.4296 25.8397 24.9865 26.1284 24.364 26.3699C23.8946 26.5531 23.1884 26.7696 21.8884 26.829C20.4829 26.8929 20.0606 26.9067 16.5006 26.9067C12.9403 26.9067 12.5183 26.8929 11.1128 26.829C9.81276 26.7691 9.1072 26.552 8.63691 26.3696C8.01468 26.1281 7.57022 25.8395 7.10356 25.3731C6.63689 24.9068 6.348 24.4638 6.10577 23.8418C5.92326 23.3727 5.70576 22.6676 5.6466 21.3686C5.58271 19.964 5.56993 19.5421 5.56993 15.9842C5.56993 12.4262 5.58271 12.0065 5.6466 10.602C5.70605 9.30296 5.92326 8.59793 6.10577 8.12827C6.34743 7.5065 6.63689 7.06239 7.10356 6.59606C7.57022 6.12973 8.01468 5.84106 8.63691 5.59902C9.10691 5.41581 9.81276 5.19931 11.1128 5.13962C12.3428 5.08411 12.8195 5.06746 15.3045 5.06467L15.3045 5.06802ZM23.6179 7.28028C22.7346 7.28028 22.0179 7.99559 22.0179 8.87855C22.0179 9.76124 22.7346 10.4774 23.6179 10.4774C24.5012 10.4774 25.2179 9.76124 25.2179 8.87855C25.2179 7.99587 24.5012 7.28028 23.6179 7.28028ZM16.5006 9.14835C12.7192 9.14835 9.65331 12.2119 9.65331 15.9906C9.65331 19.7692 12.7192 22.8314 16.5006 22.8314C20.282 22.8314 23.3468 19.7692 23.3468 15.9906C23.3468 12.2119 20.282 9.14835 16.5006 9.14835ZM16.5006 11.5494C18.9551 11.5494 20.9451 13.5376 20.9451 15.9906C20.9451 18.4432 18.9551 20.4318 16.5006 20.4318C14.0459 20.4318 12.0561 18.4432 12.0561 15.9906C12.0561 13.5376 14.0459 11.5494 16.5006 11.5494Z"
+                  fill="#F59115"
+                />
+                <path
+                  d="M16.5006 2.66699C12.8795 2.66699 12.425 2.68281 11.0028 2.74749C9.58331 2.81244 8.61441 3.037 7.76661 3.36649C6.88967 3.70679 6.14576 4.16201 5.40465 4.90285C4.66298 5.64343 4.20741 6.38677 3.86575 7.26279C3.53518 8.11023 3.31017 9.07868 3.2463 10.4965C3.18269 11.9177 3.16602 12.3721 3.16602 15.9906C3.16602 19.609 3.18213 20.0617 3.24657 21.4829C3.31186 22.9013 3.53658 23.8695 3.86602 24.7167C4.20686 25.593 4.66242 26.3363 5.40381 27.0769C6.14466 27.818 6.88855 28.2744 7.76495 28.6147C8.61328 28.9441 9.58248 29.1687 11.0016 29.2337C12.4239 29.2983 12.8781 29.3141 16.4989 29.3141C20.1204 29.3141 20.5734 29.2983 21.9957 29.2336C23.4151 29.1687 24.3851 28.9441 25.2335 28.6146C26.1101 28.2744 26.8529 27.818 27.5938 27.0769C28.3354 26.3363 28.791 25.593 29.1327 24.717C29.4605 23.8695 29.6855 22.9011 29.7521 21.4832C29.816 20.062 29.8327 19.609 29.8327 15.9906C29.8327 12.3721 29.816 11.918 29.7521 10.4968C29.6855 9.0784 29.4605 8.11023 29.1327 7.26308C28.791 6.38677 28.3354 5.64342 27.5938 4.90285C26.8521 4.16172 26.1104 3.70651 25.2326 3.36648C24.3826 3.037 23.4132 2.81244 21.9937 2.74749C20.5715 2.68281 20.1187 2.66699 16.4964 2.66699H16.5006ZM15.3045 5.06802C15.6595 5.06746 16.0556 5.06802 16.5006 5.06802C20.0606 5.06802 20.4826 5.08078 21.8884 5.14462C23.1884 5.20403 23.894 5.42108 24.364 5.60345C24.9862 5.84494 25.4299 6.13362 25.8963 6.59994C26.3629 7.06628 26.6518 7.51039 26.894 8.13215C27.0765 8.60125 27.294 9.30629 27.3532 10.6053C27.4171 12.0099 27.431 12.4318 27.431 15.9875C27.431 19.5432 27.4171 19.9652 27.3532 21.3697C27.2938 22.6687 27.0765 23.3738 26.894 23.8429C26.6524 24.4646 26.3629 24.9074 25.8963 25.3734C25.4296 25.8397 24.9865 26.1284 24.364 26.3699C23.8946 26.5531 23.1884 26.7696 21.8884 26.829C20.4829 26.8929 20.0606 26.9067 16.5006 26.9067C12.9403 26.9067 12.5183 26.8929 11.1128 26.829C9.81276 26.7691 9.1072 26.552 8.63691 26.3696C8.01468 26.1281 7.57022 25.8395 7.10356 25.3731C6.63689 24.9068 6.348 24.4638 6.10577 23.8418C5.92326 23.3727 5.70576 22.6676 5.6466 21.3686C5.58271 19.964 5.56993 19.5421 5.56993 15.9842C5.56993 12.4262 5.58271 12.0065 5.6466 10.602C5.70605 9.30296 5.92326 8.59793 6.10577 8.12827C6.34743 7.5065 6.63689 7.06239 7.10356 6.59606C7.57022 6.12973 8.01468 5.84106 8.63691 5.59902C9.10691 5.41581 9.81276 5.19931 11.1128 5.13962C12.3428 5.08411 12.8195 5.06746 15.3045 5.06467L15.3045 5.06802ZM23.6179 7.28028C22.7346 7.28028 22.0179 7.99559 22.0179 8.87855C22.0179 9.76124 22.7346 10.4774 23.6179 10.4774C24.5012 10.4774 25.2179 9.76124 25.2179 8.87855C25.2179 7.99587 24.5012 7.28028 23.6179 7.28028ZM16.5006 9.14835C12.7192 9.14835 9.65331 12.2119 9.65331 15.9906C9.65331 19.7692 12.7192 22.8314 16.5006 22.8314C20.282 22.8314 23.3468 19.7692 23.3468 15.9906C23.3468 12.2119 20.282 9.14835 16.5006 9.14835ZM16.5006 11.5494C18.9551 11.5494 20.9451 13.5376 20.9451 15.9906C20.9451 18.4432 18.9551 20.4318 16.5006 20.4318C14.0459 20.4318 12.0561 18.4432 12.0561 15.9906C12.0561 13.5376 14.0459 11.5494 16.5006 11.5494Z"
+                  fill="#F59115"
+                />
+              </svg>
+            </div>
+            <div class="shrink-0 w-8 relative">
+              <svg
+                class="whatsapp p-1 right-0 left-0 bottom-0 top-0 transform translate-x-0 translate-y-0 overflow-visible"
+                width="33"
+                height="32"
+                viewBox="0 0 33 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.04133 22.4865L3.16602 29.3337L10.1731 27.4962C12.1039 28.5491 14.2776 29.104 16.4896 29.1049H16.4953C23.7802 29.1049 29.7104 23.1764 29.7136 15.891C29.7148 12.36 28.3408 9.04011 25.8456 6.5424C23.3496 4.0447 20.031 2.66872 16.4953 2.66699C9.20913 2.66699 3.27989 8.59448 3.27693 15.8804C3.27618 18.2092 3.8847 20.4826 5.04133 22.4865ZM5.50875 15.8811C5.51098 9.82565 10.4393 4.8991 16.4995 4.8991C19.4342 4.90034 22.1923 6.04407 24.2667 8.11992C26.341 10.1958 27.4826 12.9554 27.4816 15.89C27.4791 21.946 22.5507 26.8731 16.4952 26.8731H16.4911C14.5192 26.8721 12.5857 26.3429 10.8993 25.3419L10.4978 25.104L6.33956 26.1943L7.44971 22.1416L7.18828 21.7262C6.08858 19.9774 5.50785 17.9562 5.50875 15.8811Z"
+                  fill="#F59115"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M13.1917 10.3562C12.9442 9.80633 12.6837 9.79519 12.4486 9.78554C12.2559 9.77737 12.0356 9.77786 11.8155 9.77786C11.5952 9.77786 11.2375 9.86055 10.9349 10.1911C10.6322 10.5216 9.77879 11.3205 9.77879 12.9455C9.77879 14.5705 10.9624 16.1406 11.1273 16.3612C11.2924 16.5815 13.4121 20.0227 16.7693 21.3464C19.5592 22.4466 20.1268 22.2278 20.7326 22.1728C21.3382 22.1178 22.6867 21.3739 22.9617 20.6027C23.237 19.8316 23.237 19.1708 23.1546 19.0327C23.0719 18.8948 22.8518 18.8123 22.5213 18.6472C22.1911 18.4821 20.5673 17.6829 20.2645 17.5728C19.9617 17.4626 19.7416 17.4076 19.5213 17.7381C19.3012 18.0686 18.6687 18.8123 18.4758 19.0327C18.2832 19.2532 18.0906 19.2807 17.7601 19.1156C17.4298 18.95 16.366 18.6016 15.1042 17.4765C14.1224 16.6011 13.4596 15.5199 13.2668 15.1894C13.0742 14.8589 13.2462 14.6802 13.4118 14.5156C13.5601 14.3675 13.7421 14.1298 13.9075 13.937C14.0721 13.7441 14.1273 13.6065 14.2372 13.3864C14.3474 13.1658 14.2924 12.973 14.2097 12.8078C14.1273 12.6427 13.4854 11.0093 13.1917 10.3562Z"
+                  fill="#F59115"
+                />
+              </svg>
+            </div>
+            <div class="shrink-0 w-8 relative">
+              <svg
+                class="youtube p-1 right-0 left-0 bottom-0 top-0 transform translate-x-0 translate-y-0 overflow-visible"
+                width="33"
+                height="32"
+                viewBox="0 0 33 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M29.2755 9.4894C28.9688 8.33462 28.0652 7.42515 26.9178 7.1165C24.8383 6.55566 16.4993 6.55566 16.4993 6.55566C16.4993 6.55566 8.16049 6.55566 6.08086 7.1165C4.93354 7.42519 4.02993 8.33462 3.72324 9.4894C3.16602 11.5825 3.16602 15.9496 3.16602 15.9496C3.16602 15.9496 3.16602 20.3167 3.72324 22.4098C4.02993 23.5646 4.93354 24.4362 6.08086 24.7448C8.16049 25.3056 16.4993 25.3056 16.4993 25.3056C16.4993 25.3056 24.8382 25.3056 26.9178 24.7448C28.0652 24.4362 28.9688 23.5646 29.2755 22.4098C29.8327 20.3167 29.8327 15.9496 29.8327 15.9496C29.8327 15.9496 29.8327 11.5825 29.2755 9.4894ZM13.7721 19.9146V11.9846L20.7417 15.9497L13.7721 19.9146Z"
+                  fill="#F59115"
+                />
+              </svg>
+            </div>
+            <div class="shrink-0 w-8 relative">
+              <svg
+                class="telegram p-1 right-0 left-0 bottom-0 top-0 transform translate-x-0 translate-y-0 overflow-visible"
+                width="33"
+                height="32"
+                viewBox="0 0 33 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M28.4798 7.32002C28.6669 6.11181 27.5181 5.15817 26.4438 5.62983L5.04723 15.0241C4.27684 15.3623 4.33319 16.5292 5.1322 16.7837L9.54472 18.1888C10.3869 18.457 11.2988 18.3184 12.0342 17.8103L21.9825 10.9372C22.2825 10.73 22.6094 11.1565 22.3531 11.4208L15.1922 18.8038C14.4975 19.52 14.6354 20.7336 15.471 21.2575L23.4884 26.2853C24.3877 26.8492 25.5445 26.2827 25.7127 25.1961L28.4798 7.32002Z"
+                  fill="#F59115"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- form -->
+        <div
+          class="flex flex-col gap-8 items-end justify-start shrink-0 absolute"
+          style="width: 372px; left: 219px; top: 126px"
+        >
+          <div
+            class="relative self-stretch text-white text-right text-xs font-normal"
+          >
+            کارشناسان هلدینگ ساختمانی سپنتا براساس درخواست شما با شما
+            <br />
+            تماس خواهند گرفت
+          </div>
+          <div
+            class="flex flex-col gap-6 items-end justify-start shrink-0 relative w-80"
+          >
+            <div
+              class="flex flex-row text-right items-start justify-end flex-wrap self-stretch shrink-0 relative gap-4"
+            >
+              <div
+                class="flex border-solid text-white p-2 flex-col gap-3 items-center shrink-0 relative w-40 h-8"
+              >
+                <div class="text-white text-right text-sm font-normal relative">
+                  شماره تماس
+                  <input
+                    type="text"
+                    style="
+                      width: 90%;
+                      background-color: #2a2829;
+                      border-bottom: 1px solid white;
+                    "
+                    name=""
+                    id=""
+                  />
+                </div>
+              </div>
+              <div
+                class="flex border-solid text-white p-2 flex-col gap-3 items-center shrink-0 relative w-40 h-8"
+              >
+                <div class="text-white text-right text-sm font-normal relative">
+                  نام و نام خانوادگی
+                  <input
+                    type="text"
+                    style="
+                      width: 90%;
+                      background-color: #2a2829;
+                      border-bottom: 1px solid white;
+                    "
+                    name=""
+                    id=""
+                  />
+                </div>
+              </div>
+              <div
+                class="border-solid text-white p-2 flex flex-col gap-3 items-center shrink-0 relative w-40 h-8"
+              >
+                <div
+                  class="text-white text-right text-sm font-normal relative mt-5"
+                >
+                  ایمیل
+                  <input
+                    type="text"
+                    style="
+                      width: 90%;
+                      background-color: #2a2829;
+                      border-bottom: 1px solid white;
+                    "
+                    name=""
+                    id=""
+                  />
+                </div>
+              </div>
+              <div
+                class="border-solid text-white p-2 flex flex-col gap-3 items-center shrink-0 relative w-40 h-8"
+              >
+                <div
+                  class="text-white text-right text-sm font-normal relative mt-5"
+                >
+                  متراژ پروژه
+                  <input
+                    type="text"
+                    style="
+                      width: 90%;
+                      background-color: #2a2829;
+                      border-bottom: 1px solid white;
+                    "
+                    name=""
+                    id=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="border-solid text-white p-2 flex flex-col gap-3 items-center shrink-0 relative w-40 h-8"
+            >
+              <div
+                class="text-white text-right text-sm font-normal relative mt-5"
+                style="left: 178px"
+              >
+                توضیحات تکمیلی
+
+                <input
+                  type="text"
+                  style="
+                    width: 90%;
+                    background-color: #2a2829;
+                    border-bottom: 1px solid white;
+                  "
+                  name=""
+                  id=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="request-project-hover mt-10 rounded pt-2 pr-6 pb-2 pl-6 flex flex-row gap-2 items-center justify-center shrink-0 h-10 relative"
+            style="
+              left: 83px;
+              width: 250px;
+              border: 1px solid white;
+              cursor: pointer;
+            "
+          >
+            <div
+              class="request-project text-white text-center text-sm font-normal relative flex-1"
+            >
+              ارسال درخواست پروژه
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <!-- footer -->
+      <div class="" id="section5">
+        <section
+          class="flex flex-col-reverse w-full gap-10 p-10 xl:flex-row"
+          style="background-color: rgba(42, 40, 41, 1)"
+        >
+          <!-- دوتای چپ -->
+          <div
+            class="flex flex-col w-full gap-10 justify-around items-end sm:flex-row sm:gap-40 sm:items-start xl:flex-row"
+          >
+            <div
+              class="flex flex-row justify-center sm:w-full sm:justify-end xl:justify-end"
+            >
+              <div class="view-10 xl:w-full sm:w-full">
+                <div class="text-wrapper-17">درخواست پروژه</div>
+                <div class="frame-31">
+                  <button class="button">
+                    <div class="text-wrapper-18">نام و نام خانوادگی</div>
+                  </button>
+                  <button class="button">
+                    <div class="text-wrapper-18">شماره تماس</div>
+                  </button>
+                  <button class="button">
+                    <div class="text-wrapper-18">درخواست شما</div>
+                  </button>
+                  <button class="button-2">
+                    <div class="text-wrapper-19">ارسال درخواست پروژه</div>
+                  </button>
+                </div>
+                <div
+                  class="frame-9 w-full flex flex-col justify-start items-start"
+                >
+                  <p class="text-wrapper-20">
+                    ما رو در شبکه های اجتماعی دنبال کنید
+                  </p>
+                  <div class="frame-32">
+                    <div class="frame-33"></div>
+                    <div class="frame-34"></div>
+                    <div class="frame-35"></div>
+                    <div class="frame-36"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="view-11 w-full">
+              <div class="frame-37">
+                <div class="text-wrapper-17">آدرس و شماره تماس</div>
+              </div>
+              <div class="frame-38">
+                <div class="frame-41">
+                  <p class="text-wrapper-22">
+                    تهران ، آزادی ، نبش خیابان نمایندگی ، پلاک ۱<br />
+                    ساختمان پارس ۲، واحد ۱۰
+                  </p>
+                  <img class="img-2" src="/assets/images/location.svg" />
+                </div>
+                <div class="frame-41">
+                  <div class="text-wrapper-22">۰۲۱۶۶۰۰۴۱۷۵ - ۰۲۱۶۶۰۰۳۱۵۸</div>
+                  <img class="img-2" src="/assets/images/call (1).svg" />
+                </div>
+                <div class="frame-41">
+                  <div class="text-wrapper-22">۰۹۱۰۹۶۸۹۷۹۶</div>
+                  <img class="img-2" src="/assets/images/smartphone.svg" />
+                </div>
+                <div class="frame-41">
+                  <p class="text-wrapper-22">ساعت کاری: ۹ - ۱۷</p>
+                  <img class="img-2" src="/assets/images/progress_clock.svg" />
+                </div>
+                <div class="frame-41">
+                  <div class="text-wrapper-22">info@sepantaeng.com</div>
+                  <img class="img-2" src="/assets/images/email.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- دوتای اول -->
+          <div
+            class="flex flex-col-reverse w-full gap-12 justify-around sm:flex-col-reverse xl:flex-row"
+          >
+            <div class="view-11 w-full xl:items-end xl:pr-20">
+              <div class="text-wrapper-27">خدمات هلدینک سپنتا</div>
+              <div class="text-wrapper-26">خدمات طراحی</div>
+              <div class="text-wrapper-26">خدمات نظارت</div>
+              <div class="text-wrapper-26">خدمات اجرا</div>
+            </div>
+
+            <div class="view-11 w-full">
+              <div class="text-wrapper-27">درباره ما</div>
+              <p class="text-wrapper-28 w-full sm:w-full">
+                هلدینگ ساختمانی سپنتا تلاش می نماید با طراحی تخصصی پلان و نما با
+                ویژگی های معماری مدرن و کلاسیک و تهیه نقشه های فاز ۱و۲ و طراحی
+                داخلی، ایده آل های ذهنی کارفرمایان را در خلق ساختمان های لوکس و
+                منحصر بفرد محقق نماید و با بهینه ترین محاسبات و تامین حداکثر
+                پارکینگ به تعهدات خود بعنوان امین فنی و اقتصادی کارفرما جامه عمل
+                بپوشاند.
+              </p>
+            </div>
+          </div>
+        </section>
+        <p
+          class="text-center text-white text-sm"
+          style="background-color: rgba(42, 40, 41, 1)"
+        >
+          تمام حقوق برای هلدینگ ساختمانی سپنتا محفوظ است
+        </p>
+
+        <!-- to top page button -->
+        <button
+          class="arrow-upward-alt-wrapper"
+          onclick="topFunction()"
+          id="myBtn"
+          title="برو اول صفحه"
+        >
+          <img
+            class="arrow-upward-alt"
+            src="/assets/images/arrow_upward_alt.svg"
+          />
+        </button>
+      </div>
+      <!-- end section footer -->
+    </footer>
+
+    <script src="/src/script/services.js"></script>
+    <script src="/src/script/imageViewer.js"></script>
+  </body>
+</html>

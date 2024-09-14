@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "flowbite": "^2.3.0",
+    "swiper": "^11.0.6"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.5"
+  }
+}
