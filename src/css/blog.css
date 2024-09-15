@@ -1,7 +1,6 @@
 @font-face {
   font-family: "IranSansX";
-  src: url("/public/font/iransansX\ family/IRANSansX-Light.ttf")
-    format("truetype");
+  src: url("/font/iransansX\ family/IRANSansX-Light.ttf") format("truetype");
 }
 /* check box style */
 .checkbox-custom:checked + .checkmark {
@@ -173,7 +172,7 @@
   position: absolute;
   background-color: #f9f9f9;
   min-width: 100%;
-  background-image: url("/public/images/aparteman.png");
+  background-image: url("/images/aparteman.png");
   background-size: cover;
   left: 0;
   z-index: 1;
