@@ -1,6 +1,6 @@
 @font-face {
   font-family: "IranSansX";
-  src: url("../assets/font/iransansX\ family/IRANSansX-Light.ttf")
+  src: url("/public/font/iransansX\ family/IRANSansX-Light.ttf")
     format("truetype");
 }
 @media screen and (max-width: 768px) {
@@ -39,7 +39,7 @@ body {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 100%;
-  background-image: url("../assets/images/aparteman.png");
+  background-image: url("/public/images/aparteman.png");
   background-size: cover;
   left: 0;
   z-index: 1;
@@ -370,7 +370,7 @@ body {
   flex: 0 0 auto;
 }
 .landing-page .group-2 {
-  background-image: url(../assets/images/cover.png);
+  background-image: url(/public/images/cover.png);
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -380,7 +380,7 @@ body {
   align-items: center;
 }
 .group-2 {
-  background-image: url(../assets/images/cover.png);
+  background-image: url(/public/images/cover.png);
   background-size: cover;
   width: 100%;
   position: relative;
@@ -678,7 +678,7 @@ body {
   height: 50rem;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("../assets/images/image\ 679.png");
+  background-image: url("/public/images/image\ 679.png");
 }
 .text-container {
   position: relative;
