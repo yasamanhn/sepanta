@@ -6,7 +6,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npx tailwindcss -i ./src/css/input.css -o ./dist/output.css --minify",
+    "build": "npx tailwindcss -i ./src/css/input.css -o ./dist/output.css --minify && npx cpx 'src/pages/**/*' dist/ && npx cpx 'src/assets/**/*' dist/",
     "serve": "vite preview"
   },
   "devDependencies": {
