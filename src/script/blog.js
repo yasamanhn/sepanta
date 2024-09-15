@@ -1,7 +1,7 @@
 // create more box
 const imagePaths = [
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "newBlog",
     title: "طراحی نمای شیشه ای ساختمان در انواع مدل ها",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -9,7 +9,7 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "newBlog",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -17,7 +17,7 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "memaari",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -25,7 +25,7 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "memaari",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -33,7 +33,7 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "memaari",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -41,7 +41,7 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "ejrayi",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -49,7 +49,7 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "hoghooghi",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -57,7 +57,7 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "hoghooghi",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -65,7 +65,7 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "structure ",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -73,7 +73,7 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "structure ",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -81,14 +81,14 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "structure ",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
     description:
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
 
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "other",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -96,7 +96,7 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "news",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -104,7 +104,7 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "news",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
@@ -112,7 +112,7 @@ const imagePaths = [
       "اگر از محل کار تاریک و دلگیر خود خسته شده‌اید، با یادگیری اصول طراحی دفتر کار شیشه ای، می‌توانید شرکت و یا اداره‌ای دلباز و ",
   },
   {
-    path: "/src/assets/images/IMAGE14 (2).png",
+    path: "../assets/images/IMAGE14 (2).png",
     category: "news",
     title: "مهمترین اصول طراحی دفتر کار شیشه ای",
     date: "۲۵ اردیبهشت,۱۴۰۲",
