@@ -1,4 +1,12 @@
 {
-  "builds": [{ "src": "src/pages/**/*.html", "use": "@vercel/static" }],
+  "builds": [
+    {
+      "src": "src/pages/**/*.html",
+      "use": "@vercel/static",
+      "scripts": {
+        "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+      }
+    }
+  ],
   "routes": [{ "src": "/(.*)", "dest": "/src/pages/$1" }]
 }
