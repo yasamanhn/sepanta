@@ -20,4 +20,6 @@ export default defineConfig({
       },
     },
   },
+  root: "/src",
+  outDir: "dist",
 });
