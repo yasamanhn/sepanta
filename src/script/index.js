@@ -79,26 +79,7 @@ function topFunction() {
 }
 
 // services navbar
-document.addEventListener("DOMContentLoaded", function () {
-  var dropdown = document.getElementById("dropdown");
-  var dropdownContent = document.getElementById("dropdownContent");
-  var dropbtn = document.getElementById("dropbtn");
-  var droptext = document.getElementById("text-services");
 
-  dropbtn.addEventListener("click", function () {
-    dropdownContent.classList.toggle("show");
-    dropbtn.classList.toggle("fa-angle-down");
-    dropbtn.classList.toggle("clicked");
-    droptext.classList.toggle("change-color-text");
-  });
-
-  // Close the dropdown when clicking outside of it
-  window.addEventListener("click", function (event) {
-    if (!dropdown.contains(event.target) && !dropbtn.contains(event.target)) {
-      dropdownContent.classList.remove("show");
-    }
-  });
-});
 function changeColor(element) {
   // یافتن عنصر داخلی که می‌خواهیم رنگ آن تغییر کند
   var textWrapper = element.querySelector(".text-wrapper-30");

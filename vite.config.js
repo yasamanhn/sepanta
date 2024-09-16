@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import path from "path"; // حتماً path را ایمپورت کنید
+import path from "path";
 
 export default defineConfig({
   resolve: {
@@ -28,5 +28,6 @@ export default defineConfig({
         page12: path.resolve(__dirname, "src/pages/SingleServiceNezaratr.html"),
       },
     },
+    assetsDir: "assets",
   },
 });

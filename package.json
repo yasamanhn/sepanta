@@ -1,4 +1,10 @@
 {
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not ie < 11"
+  ],
   "dependencies": {
     "firebase": "^10.13.1",
     "flowbite": "^2.3.0",
@@ -6,11 +12,14 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npx tailwindcss -i ./src/css/input.css -o ./dist/output.css --minify && npx cpx 'src/pages/**/*' dist/ && npx cpx 'src/assets/**/*' dist/",
+    "build": "vite build && npx cpx '/src/assets/**/*' dist/ && npx cpx '/src/css/**/*' dist/ && npx cpx '/src/script/**/*' dist/",
     "serve": "vite preview"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^5.1.0",
+    "autoprefixer": "^10.4.20",
+    "cpx": "^1.5.0",
+    "postcss": "^8.4.47",
     "vite": "^5.4.5"
   }
 }
