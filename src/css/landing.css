@@ -41,7 +41,7 @@ body {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 100%;
-  background-image: url("../assets/images/aparteman.png");
+  background-image: url("/assets/images/aparteman.png");
   background-size: cover;
   left: 0;
   z-index: 1;
@@ -373,7 +373,7 @@ body {
 }
 
 .group-2 {
-  background-image: url("../assets/images/cover.png");
+  background-image: url("/assets/images/cover.png");
   background-size: cover;
   width: 100%;
   position: relative;
@@ -670,7 +670,7 @@ body {
   height: 50rem;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("../assets/images/image\ 679.png");
+  background-image: url("/assets/images/image\ 679.png");
 }
 .text-container {
   position: relative;
