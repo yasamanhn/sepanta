@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>طراحی نمای ساختمان - سپنتا</title>
-
+    <title>گروه معماری سپنتا</title>
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="../assets/css/style.css" />
-
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -402,10 +401,8 @@
         }
       }
     </style>
-    <script type="module" crossorigin src="/assets/checkBoxFilter-pagination-Dg5T-avc.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/swiper-bundle-B2VbjqDY.css">
-    <link rel="stylesheet" crossorigin href="/assets/blog-CeQRRCBA.css">
-    <link rel="stylesheet" crossorigin href="/assets/landing-CNiLUURx.css">
+    <link rel="stylesheet" crossorigin href="/assets/swiper-bundle-u9v9mUpA.css">
+    <link rel="stylesheet" crossorigin href="/assets/landing-CXCkaSYb.css">
   </head>
   <body>
     <!--=============== HEADER ===============-->
@@ -530,161 +527,151 @@
       </nav>
     </header>
 
-    <section class="mb-20 md:mt-20">
-      <div class="m-2">
-        <div class="mt-32">
-          <div class="relative flex-col justify-center md:m-20">
+    <section>
+      <div class="section-one relative">
+        <div
+          class="flex justify-center flex-col relative"
+          style="margin: 1rem 5rem 0 7rem"
+        >
+          <div class="mt-5">
             <div
-              class="self-stretch text-right font-bold text-gray-800 text-lg font-iransans break-words"
+              class="mt-20 self-stretch text-right font-bold text-gray-800 text-lg font-iransans break-words"
             >
-              طراحی نمای ساختمان سپنتا
+              پروژه های هلدینگ ساختمانی سپنتا
             </div>
             <div
-              class="text-justify pt-2 self-stretch text-gray-800 text-base font-iransans font-normal break-words"
-              style="direction: rtl"
+              class="pt-2 self-stretch text-right text-gray-800 text-base font-iransans font-normal break-words"
             >
               مهندسین باتجربه سپنتا در تمامی مراحل پروژه کنار شما هستند
             </div>
-            <div class="pt-10 text-right font-bold text-gray-800 text-lg">
-              نمایش بر اساس دسته بندی
-            </div>
 
             <div class="flex items-center">
-              <!-- check box -->
               <div
-                class="flex gap-10 w-full flex-col md:flex-row p-5"
-                id="checkboxes-container"
+                class="text-right text-gray-800 text-base font-iransans font-normal break-words"
               >
-                <div class="flex-row flex gap-20">
-                  <label for="brik" class="checkbox-custom-label">
-                    <input
-                      type="checkbox"
-                      class="checkbox-custom"
-                      id="brik"
-                      onchange="filterImages()"
-                    />
-                    <span class="checkmark"></span>
-                    <span class="label-text">نمای آجر</span>
-                  </label>
-                  <label for="rock" class="checkbox-custom-label">
-                    <input
-                      type="checkbox"
-                      class="checkbox-custom"
-                      id="rock"
-                      onchange="filterImages()"
-                    />
-                    <span class="checkmark"></span>
-                    <span class="label-text">نمای سنگی </span>
-                  </label>
-                </div>
-                <div class="flex-row flex gap-16">
-                  <label for="glass" class="checkbox-custom-label">
-                    <input
-                      type="checkbox"
-                      class="checkbox-custom"
-                      id="glass"
-                      onchange="filterImages()"
-                    />
-                    <span class="checkmark"></span>
-                    <span class="label-text">نمای شیشه</span>
-                  </label>
-                  <label for="combined" class="checkbox-custom-label">
-                    <input
-                      type="checkbox"
-                      class="checkbox-custom"
-                      id="combined"
-                      onchange="filterImages()"
-                    />
-                    <span class="checkmark"></span>
-                    <span class="label-text">نمای تلفیقی</span>
-                  </label>
-                </div>
+                نمایش بر اساس دسته بندی :
+              </div>
+              <!-- check box -->
+              <div class="flex gap-10 p-10" id="checkboxes-container">
+                <label for="Residential-projects" class="checkbox-custom-label">
+                  <input
+                    type="checkbox"
+                    class="checkbox-custom"
+                    id="Residential-projects"
+                    onchange="filterImages()"
+                  />
+                  <span class="checkmark"></span>
+                  <span class="label-text"> پروژه های طراحی</span>
+                </label>
+                <label for="edaari" class="checkbox-custom-label">
+                  <input
+                    type="checkbox"
+                    class="checkbox-custom"
+                    id="edaari"
+                    onchange="filterImages()"
+                  />
+                  <span class="checkmark"></span>
+                  <span class="label-text">پروژه های نظارت</span>
+                </label>
+                <label for="tejari" class="checkbox-custom-label">
+                  <input
+                    type="checkbox"
+                    class="checkbox-custom"
+                    id="tejari"
+                    onchange="filterImages()"
+                  />
+                  <span class="checkmark"></span>
+                  <span class="label-text"> پروژه های اجرا</span>
+                </label>
+                <label for="other" class="checkbox-custom-label">
+                  <input
+                    type="checkbox"
+                    class="checkbox-custom"
+                    id="other"
+                    onchange="filterImages()"
+                  />
+                  <span class="checkmark"></span>
+                  <span class="label-text">پروژه های ۰ تا ۱۰۰</span>
+                </label>
                 <!-- Add more checkboxes for other categories -->
               </div>
             </div>
           </div>
           <!-- section two arttures -->
-          <div
-            class="mt-10 wrapper flex-col m-auto sm:m-20 flex gap-10 sm:flex-col md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 xl:grid xl:grid-cols-4"
-            id="image-container"
-          >
+          <div class="wrapper" id="image-container">
             <script>
               // create more box
               const imagePaths = [
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "combined",
+                  path: "../assets/images/art2.png",
+                  category: "other",
                   title: "پروژه ۱",
                 },
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "glass",
+                  path: "../assets/images/art7.png",
+                  category: "edaari",
                   title: "پروژه ۲",
                 },
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "brik",
+                  path: "../assets/images/art3.png",
+                  category: "tejari",
                   title: "پروژه ۳",
                 },
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "combined",
+                  path: "../assets/images/art4.png",
+                  category: "other",
                   title: "پروژه ۴",
                 },
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "glass",
+                  path: "../assets/images/art5.png",
+                  category: "edaari",
                   title: "پروژه ۵",
                 },
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "rock",
+                  path: "../assets/images/art2.png",
+                  category: "other",
                   title: "پروژه ۶",
                 },
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "rock",
+                  path: "../assets/images/art7.png",
+                  category: "edaari",
                   title: "پروژه ۷",
                 },
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "combined",
+                  path: "../assets/images/art3.png",
+                  category: "tejari",
                   title: "پروژه ۸",
                 },
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "combined",
+                  path: "../assets/images/art4.png",
+                  category: "other",
                   title: "پروژه ۹",
                 },
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "glass",
+                  path: "../assets/images/art5.png",
+                  category: "edaari",
                   title: "پروژه ۱۰",
                 },
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "brik",
-                  title: "پروژه ۱۱",
+                  path: "../assets/images/art7.png",
+                  category: "Residential-projects",
+                  title: "پروژه ویلای کردان",
                 },
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "combined",
+                  path: "../assets/images/art6.png",
+                  category: "Residential-projects",
+                  title: "۱۱ پروژه ",
+                },
+                {
+                  path: "../assets/images/art7.png",
+                  category: "Residential-projects",
                   title: "پروژه ۱۲",
                 },
+
                 {
-                  path: "../assets/images/pic6.png",
-                  category: "combined",
-                  title: "پروژه ۱۳",
-                },
-                {
-                  path: "../assets/images/pic6.png",
-                  category: "combined",
-                  title: "پروژه ۱۴",
-                },
-                {
-                  path: "../assets/images/pic6.png",
-                  category: "combined",
-                  title: "پروژه ۱۵",
+                  path: "../assets/images/art6.png",
+                  category: "Residential-projects",
+                  title: "پروژه  ۱۳",
                 },
 
                 // Add more images with appropriate categories
@@ -710,7 +697,7 @@
                 paragraph.textContent = "نمایش بیشتر";
                 // Add click event listener to paragraph to navigate to singleDesign.html
                 paragraph.addEventListener("click", function () {
-                  window.location.href = "SingleServiceDesign.html";
+                  window.location.href = "SingleDesignProject.html"; // Relative path to singleDesign.html page
                 });
 
                 //این کد برای ایجادو اضافه کردن عناصر اچ تی ام ال به دام است
@@ -754,12 +741,11 @@
               }
             </script>
           </div>
+          <!--paginate-->
+          <div class="paginate mt-20 mb-10"></div>
         </div>
       </div>
-      <!--paginate-->
-      <div class="paginate"></div>
     </section>
-
     <footer>
       <div class="" id="section5">
         <section
@@ -851,7 +837,6 @@
 
             <div class="view-11 w-full">
               <div class="text-wrapper-27">درباره ما</div>
-
               <p class="text-wrapper-28 w-full sm:w-full">
                 هلدینگ ساختمانی سپنتا تلاش می نماید با طراحی تخصصی پلان و نما با
                 ویژگی های معماری مدرن و کلاسیک و تهیه نقشه های فاز ۱و۲ و طراحی
@@ -885,13 +870,8 @@
       </div>
       <!-- end section footer -->
     </footer>
-
-    <script src="../script/index.js"></script>
-    <script>
-      function toggleNav() {
-        var nav = document.getElementById("navbar");
-        menu.classList.toggle("mobile-menu"); // Toggle the 'mobile-menu' class
-      }
-    </script>
+    <script src="../script/index.js"></script>
+    <script src="../script/checkBoxFilter-pagination.js"></script>
   </body>
 </html>
+<style></style>

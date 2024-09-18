@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>نمایش همه پروژه ها</title>
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <title>مقاله ای از یک وبلاگ</title>
 
+    <link rel="stylesheet" href="../assets/css/style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -401,9 +401,9 @@
         }
       }
     </style>
-    <link rel="stylesheet" crossorigin href="/assets/swiper-bundle-B2VbjqDY.css">
-    <link rel="stylesheet" crossorigin href="/assets/landing-CNiLUURx.css">
-    <link rel="stylesheet" crossorigin href="/assets/imageViewer-BfjN_Vwy.css">
+    <script type="module" crossorigin src="/assets/checkBoxFilter-pagination-Dg5T-avc.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/swiper-bundle-u9v9mUpA.css">
+    <link rel="stylesheet" crossorigin href="/assets/landing-CXCkaSYb.css">
   </head>
   <body>
     <header class="header" id="navbar">
@@ -526,120 +526,328 @@
         </div>
       </nav>
     </header>
-    <!-- text top page -->
-    <div class="section-one relative mt-10">
-      <div
-        class="flex justify-center flex-col relative"
-        style="margin: 1rem 5rem 0 7rem"
-      >
-        <div class="mr-10">
-          <div
-            class="mt-20 self-stretch text-right font-bold text-gray-800 text-lg font-iransans break-words"
-          >
-            خدمات هلدینگ ساختمانی سپنتا
-          </div>
-          <div
-            class="pt-2 self-stretch text-right text-gray-800 text-base font-iransans font-normal break-words"
-          >
-            مهندسین باتجربه سپنتا در تمامی مراحل پروژه کنار شما هستند
-          </div>
 
-          <!-- breadcrump -->
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">
-                نام پروژه
-              </li>
-              <li class="breadcrumb-item">
-                <a href="#"> پروژه های خدمات طراحی سپنتا</a>
-              </li>
-              <li class="breadcrumb-item">
-                <a href="#">پروژه های سپنتا</a>
-              </li>
-              <li class="breadcrumb-item"><a href="#">صفحه اصلی</a></li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-    </div>
-    <!-- start images -->
-    <section class="flex gap-5 m-10 justify-evenly">
-      <!-- تمپلت برای خدمات طراحی نظارت اجرایی -->
-      <div class="">
-        <div
-          class="m-5 p-5 bg-white bg-opacity-30 shadow flex-col justify-evenly items-end gap-5 inline-flex"
-        >
-          <div class="justify-center items-center inline-flex">
-            <img src="/assets/IMAGE14%20(2)-B6_yHhwQ.png" />
-          </div>
-          <div class="self-stretch flex-col justify-start items-end gap-4 flex">
-            <div
-              class="self-stretch text-right text-neutral-700 text-base font-semibold"
+    <!-- section 1 -->
+    <section>
+      <div
+        class="cover-image bg-no-repeat bg-cover relative"
+        style="background-image: url(/images/section1blog.png)"
+      >
+        <div class="text-container">
+          <div class="p-32">
+            <div class="font-bold text-lg mb-10">
+              طراحی نمای شیشه ای ساختمان در انواع مدل ها
+            </div>
+            <p class="text-black">
+              نمای شیشه ای ساختمان با اختلاف یکی از زیباترین نماهای حال حاضر
+              دنیا است، در واقع می‌توانیم به آن نمای شیشه ای مدرن ساختمان
+              بگوییم. در این مقاله با روش های طراحی نمای شیشه ای مسکونی ویلایی
+              همچون نمای شیشه ای کرتین وال، فریم لس، اسپایدر و … آشنا خواهید شد.
+            </p>
+            <ul
+              class="m-10 text-gray-800 text-right text-base font-normal leading-normal"
             >
-              ۰۱
-            </div>
-            <div class="text-right text-neutral-700 text-xl font-medium">
-              خدمات نظارت
-            </div>
-            <div class="show-more" id="show-more-nezarat" onclick="click()">
-              <span><i class="icon fa fa-angle-left"></i></span>
-              <span class="text cursor-pointer">نمایش بیشتر</span>
-            </div>
+              <li class="m-6">نمای شیشه ای چیست؟</li>
+              <li class="m-6">تاریخچه وکاربرد نمای شیشه ای ساختمان</li>
+              <li class="m-6">انواع نمای شیشه ای ساختمان</li>
+              <li class="m-6">نمای کرتین وال</li>
+              <li class="m-6">نمای اسپایدر</li>
+              <li class="m-6">نمای فریم‌لس</li>
+              <li class="m-6">نمای شیشه ای ویلا</li>
+              <li class="m-6">اجرای نمای شیشه ای</li>
+            </ul>
           </div>
         </div>
       </div>
-      <!--  تمپلت برای طراحی دکوراسیون داخلی و طراحی نمای ساختمان -->
-      <div class="">
-        <div
-          class="m-5 p-5 bg-white bg-opacity-30 shadow flex-col justify-evenly items-end gap-5 inline-flex"
-        >
-          <div class="justify-center items-center inline-flex">
-            <img src="/assets/IMAGE14%20(2)-B6_yHhwQ.png" />
+    </section>
+
+    <!-- section 2 pictures -->
+    <section
+      id="section1"
+      style="background-image: url(/images/backgroundblog.png); padding: 5%"
+    >
+      <!-- picture 1 -->
+      <section class="mt-20 mb-32" style="direction: ltr">
+        <div class="wine-row flex justify-between">
+          <img
+            src="/assets/blog1-6nyEvebi.png"
+            style="width: 376px; height: 202px"
+          />
+
+          <div class="w-2/3" style="direction: rtl">
+            <h3
+              class="text-gray-800 text-right text-xl font-bold leading-normal"
+            >
+              نمای شیشه ای چیست؟
+            </h3>
+            <p class="mt-5">
+              وقتی بخش قابل‌توجهی از نمای یک ساختمان، یعنی حداقل ۶۰ درصد از شیشه
+              باشد، در این‌صورت این نما، نمای شیشه ای گفته می‌شود. این نماها
+              حالتی پیوسته و یکپارچه و جلوه بصری جذابی دارند و به‌همین دلیل مورد
+              استقبال بسیاری از افراد قرار گرفته‌اند. استفاده از این نوع نما
+              باعث شده است که افراد در طول روز سهم بیشتری از نور طبیعی داشته
+              ‌باشند و البته در برخی مدل‌ها قابلیت جلوگیری از عبور اشعه فرابنفش
+              خورشید وجود دارد. این نما کمترین اضافات را در مقایسه با دیگر
+              نماهای ساختمانی دارد. از دیگر مزایای استفاده از این نمای مدرن،
+              عایق بودن صدا و تنوع رنگ بسیار زیاد آن است
+            </p>
           </div>
+        </div>
+      </section>
+      <!-- picture 2 -->
+      <section class="mb-32" style="direction: ltr">
+        <div class="wine-row flex justify-between">
+          <img
+            src="/assets/blog2-CZcntSu_.png"
+            style="width: 376px; height: 202px"
+          />
+
+          <div class="w-2/3" style="direction: rtl">
+            <h3
+              class="text-gray-800 text-right text-xl font-bold leading-normal"
+            >
+              تاریخچه نمای شیشه ای ساختمان
+            </h3>
+            <p class="mt-5">
+              اولین بار در سال ۱۸۶۴ از شیشه برای طراحی نمای ساختمان در یک
+              ساختمان پنج طبقه در لیورپول انگلستان استفاده ‌شد و پس‌ازآن در
+              سراسر جهان مورد استفاده قرار گرفت. در ایران استفاده از شیشه برای
+              نمای ساختمان، به دوره معماری ایرانی اسلامی بازمی‌گردد که رشد
+              چشمگیر آن را در اماکن مذهبی و مساجد، برای به تصویر کشیدن شکوه و
+              عظمت بنا بوده است
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- picture 3 -->
+      <section class="mb-32" style="direction: ltr">
+        <div class="wine-row flex justify-between">
+          <img
+            src="/assets/blog3-Dsjv9YLM.png"
+            style="width: 376px; height: 202px"
+          />
+
+          <div class="w-2/3" style="direction: rtl">
+            <h3
+              class="text-gray-800 text-right text-xl font-bold leading-normal"
+            >
+              انواع نمای شیشه ای ساختمان
+            </h3>
+            <p class="mt-5">
+              نماهای شیشه ای ساختمانی از نظر نوع شیشه و نما به چند دسته تقسیم
+              می‌شوند. در ابتدا انواع شیشه مورد استفاده را بررسی خواهیم کرد:
+              شیشه چندلایه: شیشه‌های چندلایه از ترکیب چند لایه شیشه و پلاستیک
+              ساخته می‌شوند. فضای میانی لایه‌های شیشه و پلاستیک معمولا با گاز
+              آرگون پر می‌شود که رسانایی حرارتی را کاهش می‌دهند. ازاین‌رو، این
+              شیشه‌ها بیشتر برای پنجره‌های بازشو استفاده می‌شوند. شیشه رفلکس:
+              این شیشه‌ها تا میزان ورودی نور را به فضای داخلی ساختمان کنترل کند.
+              این نوع شیشه‌ها با بازتاب بخشی از نور آفتاب، نور ورودی را کنترل
+              می‌کنند. شیشه سکوریت: یکی از معایب شیشه‌های قدیمی، مقاومت پایین
+              آن‌ها در برابر شکستن است. در شیشه‌های سکوریت به‌دلیل نوع فناوری که
+              در ساخت آن‌ها استفاده شده است، احتمال شکستن بسیار کم است.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- picture 4 -->
+      <section class="mb-32" style="direction: ltr">
+        <div class="wine-row flex justify-between">
+          <img
+            src="/assets/blog4-Bhr3MN2-.png"
+            style="width: 376px; height: 202px"
+          />
+
+          <div class="w-2/3" style="direction: rtl">
+            <h3
+              class="text-gray-800 text-right text-xl font-bold leading-normal"
+            >
+              نمای کرتین وال
+            </h3>
+            <p class="mt-5">
+              این نوع نما در برج‌های بلند با وزن بالا استفاده می‌شود. زیرا تنها
+              وزن خود را تحمل می‌کند و هیچ وزنی را به ساختمان اضافه نمی‌کند. این
+              سازه از جنس آلومینیم و شیشه است. ازجمله مزیت‌های این نوع سازه
+              شیشه‌ای عبارتند از: محاسبه میزان مقاومت در نرم‌افزارهای اختصاصی در
+              برابر خطرات جوی و طبیعی عایق رطوبت عایق صدا عایق حرارت قابلیت
+              بهره‌گیری از شیشه‌های چند جداره قابلیت اجرا به‌صورت کاملا
+              آلومینیومی عدم محدودیت در رنگ
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- picture 5 -->
+      <section class="mb-32" style="direction: ltr">
+        <div class="wine-row flex justify-between">
+          <img
+            src="/assets/blog5-yd467B9B.png"
+            style="width: 376px; height: 202px"
+          />
+
+          <div class="w-2/3" style="direction: rtl">
+            <h3
+              class="text-gray-800 text-right text-xl font-bold leading-normal"
+            >
+              نمای اسپایدر
+            </h3>
+            <p class="mt-5">
+              این نوع نما در برج‌های بلند با وزن بالا استفاده می‌شود. زیرا تنها
+              وزن خود را تحمل می‌کند و هیچ وزنی را به ساختمان اضافه نمی‌کند. این
+              سازه از جنس آلومینیم و شیشه است. ازجمله مزیت‌های این نوع سازه
+              شیشه‌ای عبارتند از: محاسبه میزان مقاومت در نرم‌افزارهای اختصاصی در
+              برابر خطرات جوی و طبیعی عایق رطوبت عایق صدا عایق حرارت قابلیت
+              بهره‌گیری از شیشه‌های چند جداره قابلیت اجرا به‌صورت کاملا
+              آلومینیومی عدم محدودیت در رنگ
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- picture 6 -->
+      <section class="mb-32" style="direction: ltr">
+        <div class="wine-row flex justify-between">
+          <img
+            src="/assets/blog6-BJ638_SR.png"
+            style="width: 376px; height: 202px"
+          />
+
+          <div class="w-2/3" style="direction: rtl">
+            <h3
+              class="text-gray-800 text-right text-xl font-bold leading-normal"
+            >
+              نمای فریم‌لس
+            </h3>
+            <p class="mt-5">
+              این نوع نما در برج‌های بلند با وزن بالا استفاده می‌شود. زیرا تنها
+              وزن خود را تحمل می‌کند و هیچ وزنی را به ساختمان اضافه نمی‌کند. این
+              سازه از جنس آلومینیم و شیشه است. ازجمله مزیت‌های این نوع سازه
+              شیشه‌ای عبارتند از: محاسبه میزان مقاومت در نرم‌افزارهای اختصاصی در
+              برابر خطرات جوی و طبیعی عایق رطوبت عایق صدا عایق حرارت قابلیت
+              بهره‌گیری از شیشه‌های چند جداره قابلیت اجرا به‌صورت کاملا
+              آلومینیومی عدم محدودیت در رنگ
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- picture 7 -->
+      <section class="mb-32" style="direction: ltr">
+        <div class="wine-row flex justify-between">
+          <img
+            src="/assets/blog7-Cuc-S0Hj.png"
+            style="width: 376px; height: 202px"
+          />
+
+          <div class="w-2/3" style="direction: rtl">
+            <h3
+              class="text-gray-800 text-right text-xl font-bold leading-normal"
+            >
+              نمای شیشه ای ویلا
+            </h3>
+            <p class="mt-5">
+              این نوع نما در برج‌های بلند با وزن بالا استفاده می‌شود. زیرا تنها
+              وزن خود را تحمل می‌کند و هیچ وزنی را به ساختمان اضافه نمی‌کند. این
+              سازه از جنس آلومینیم و شیشه است. ازجمله مزیت‌های این نوع سازه
+              شیشه‌ای عبارتند از: محاسبه میزان مقاومت در نرم‌افزارهای اختصاصی در
+              برابر خطرات جوی و طبیعی عایق رطوبت عایق صدا عایق حرارت قابلیت
+              بهره‌گیری از شیشه‌های چند جداره قابلیت اجرا به‌صورت کاملا
+              آلومینیومی عدم محدودیت در رنگ
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- picture 8 -->
+      <section class="mb-32" style="direction: ltr">
+        <div class="wine-row flex justify-between">
+          <img
+            src="/assets/blog8-DeFtsG2z.png"
+            style="width: 376px; height: 202px"
+          />
+
+          <div class="w-2/3" style="direction: rtl">
+            <h3
+              class="text-gray-800 text-right text-xl font-bold leading-normal"
+            >
+              اجرای نمای شیشه ای
+            </h3>
+            <p class="mt-5">
+              این نوع نما در برج‌های بلند با وزن بالا استفاده می‌شود. زیرا تنها
+              وزن خود را تحمل می‌کند و هیچ وزنی را به ساختمان اضافه نمی‌کند. این
+              سازه از جنس آلومینیم و شیشه است. ازجمله مزیت‌های این نوع سازه
+              شیشه‌ای عبارتند از: محاسبه میزان مقاومت در نرم‌افزارهای اختصاصی در
+              برابر خطرات جوی و طبیعی عایق رطوبت عایق صدا عایق حرارت قابلیت
+              بهره‌گیری از شیشه‌های چند جداره قابلیت اجرا به‌صورت کاملا
+              آلومینیومی عدم محدودیت در رنگ
+            </p>
+          </div>
+        </div>
+      </section>
+      <!--paginate-->
+      <div class="paginate relative"></div>
+      <!-- nazarat -->
+      <section>
+        <div
+          style="direction: rtl; background-color: rgba(64, 64, 64, 1)"
+          class="m-auto flex flex-col mt-10 mb-20 sm:m-auto sm:mt-10 sm:mb-12"
+        >
+          <div class="p-5">
+            <p class="text-white text-justify paragraph mb-2 text-sm">
+              دیدگاهتان را بنویسید
+            </p>
+            <p class="text-white text-justify paragraph mb-5 text-sm">
+              نشانی ایمیل شما منتشر نخواهد شد.بخش های مورد نیاز باعلامت * مشخص
+              شده است
+            </p>
+          </div>
+          <p style="color: white" class="pr-5">دیدگاه*</p>
+          <textarea
+            class="mr-5 ml-5 mt-2 p-5 w-80 md:w-3/4 lg:w-2/3 xl:w-1/2"
+            name=""
+            id=""
+          ></textarea>
           <div
-            class="self-stretch h-28 flex-col justify-start items-end gap-4 flex"
+            class="flex mt-10 flex-col mr-5 sm:flex-row sm:gap-6 sm:m-auto sm:mt-5 md:mr-5 md:gap-10 lg:gap-10 xl:gap-20"
           >
-            <div
-              class="self-stretch text-right text-neutral-700 text-base font-semibold"
-            >
-              ۰۱
+            <div class="flex flex-row">
+              <div class="flex flex-col space-y-4">
+                <label for="email" class="text-white">ایمیل*</label>
+                <input
+                  type="text"
+                  style="background-color: rgba(255, 255, 255, 0.5)"
+                  class="p-1 bg-gray-700"
+                />
+              </div>
             </div>
-            <div class="text-right text-neutral-700 text-xl font-medium">
-              خدمات طراحی دکوراسیون داخلی
+            <div class="flex flex-row space-y-4">
+              <div class="flex flex-col space-y-4">
+                <label for="email" class="text-white">نام خانوادگی*</label>
+                <input
+                  type="text"
+                  style="background-color: rgba(255, 255, 255, 0.5)"
+                  class="p-1"
+                />
+              </div>
             </div>
-            <div class="show-more" id="show-more-design" onclick="click()">
-              <span><i class="icon fa fa-angle-left"></i></span>
-              <span class="text cursor-pointer">نمایش بیشتر</span>
+            <div class="flex flex-row space-y-4">
+              <div class="flex flex-col space-y-4">
+                <label for="email" class="text-white">وبسایت</label>
+                <input
+                  type="text"
+                  style="background-color: rgba(255, 255, 255, 0.5)"
+                  class="p-1"
+                />
+              </div>
             </div>
           </div>
+          <div class="flex m-5">
+            <input type="checkbox" name="" id="" />
+            <p class="text-white text-justify paragraph text-sm">
+              ذخیره نام, ایمیل و وبسایت من در مرورگر برای زمانی که دوباره
+              دیدگاهی بنویسم.
+            </p>
+          </div>
+          <button class="sendComment w-32 m-5 p-2 rounded sm:w-32">
+            ارسال دیدگاه
+          </button>
         </div>
-      </div>
-      <!-- تمپلت برای فاز ۱ / فاز ۲/ازبیلت/ بازسازی ساختمان/ نظارت انتخابی/ استحکام بنا/ مشارکت در ساخت/ مدیریت پیمان و غیره  -->
-      <div class="">
-        <div
-          class="m-5 p-5 bg-white bg-opacity-30 shadow flex-col justify-evenly items-end gap-5 inline-flex"
-        >
-          <div class="justify-center items-center inline-flex">
-            <img src="/assets/IMAGE14%20(2)-B6_yHhwQ.png" />
-          </div>
-          <div
-            class="self-stretch h-28 flex-col justify-start items-end gap-4 flex"
-          >
-            <div
-              class="self-stretch text-right text-neutral-700 text-base font-semibold"
-            >
-              ۰۱
-            </div>
-            <div class="text-right text-neutral-700 text-xl font-medium">
-              مجری حقوقی
-            </div>
-            <div class="show-more" id="show-more-another" onclick="click()">
-              <span><i class="icon fa fa-angle-left"></i></span>
-              <span class="text cursor-pointer">نمایش بیشتر</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
     </section>
 
     <footer>
@@ -769,18 +977,23 @@
     </footer>
 
     <script src="../script/services.js"></script>
+    <script src="../script/index.js"></script>
+    <script src="../script/blog.js"></script>
+
     <script>
-      const showMoreNezarat = document.getElementById("show-more-nezarat");
-      showMoreNezarat.addEventListener("click", function () {
-        window.location.href = "SingleServiceNezaratr.html";
-      });
-      const showMoreDesign = document.getElementById("show-more-design");
-      showMoreDesign.addEventListener("click", function () {
-        window.location.href = "SingleServiceDesign.html";
-      });
-      const showMoreAnother = document.getElementById("show-more-another");
-      showMoreAnother.addEventListener("click", function () {
-        window.location.href = "SingleServiceAnotherPage.html";
+      window.addEventListener("scroll", function () {
+        var section1 = document.getElementById("section1");
+        var navbar = document.getElementById("navbar");
+
+        // Get the bounding rectangle of section1
+        var section1Rect = section1.getBoundingClientRect();
+
+        // Check if the top of section1 is within the viewport
+        if (section1Rect.top <= 0 && section1Rect.bottom > 0) {
+          navbar.style.backgroundColor = "rgba(223, 223, 223, 1)"; // Change navbar color when scrolling within section1
+        } else {
+          navbar.style.backgroundColor = "rgba(255, 255, 255, 0.50)"; // Revert to initial background color when not within section1
+        }
       });
     </script>
   </body>

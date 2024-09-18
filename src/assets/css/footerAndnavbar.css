@@ -142,7 +142,7 @@
   height: 24px;
   top: 0;
   left: 0;
-  background-image: url("../assets/images/instagram.svg");
+  background-image: url("../images/in");
   background-size: 100% 100%;
 }
 .frame-9 {
@@ -150,7 +150,7 @@
 }
 .frame-34 {
   left: 39px;
-  background-image: url("../assets/images/whatsapp.svg");
+  background-image: url("../images/whatsapp.svg");
   position: absolute;
   width: 24px;
   height: 24px;
@@ -160,7 +160,7 @@
 
 .frame-35 {
   left: 79px;
-  background-image: url("../assets/images/youtube.svg");
+  background-image: url("../images/youtube.svg");
   position: absolute;
   width: 24px;
   height: 24px;
@@ -170,7 +170,7 @@
 
 .frame-36 {
   left: 119px;
-  background-image: url("../assets/images/telegram.svg");
+  background-image: url("../images/telegram.svg");
   position: absolute;
   width: 24px;
   height: 24px;
