@@ -1,30 +1,24 @@
 import { defineConfig } from "vite";
-import path from "path";
+import { resolve } from "path";
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
-    },
-  },
   build: {
     rollupOptions: {
       input: {
-        main: "/pages/index.html",
-        page1: "/pages/blog.html",
-        page2: "/pages/contactWithUs.html",
-        page3: "/pages/inside-decoration.html",
-        page4: "/pages/javaaz.html",
-        page5: "/pages/outside-decoration.html",
-        page6: "/pages/projects.html",
-        page7: "/pages/ShowAllServices.html",
-        page8: "/pages/SingleBlog.html",
-        page9: "/pages/SingleDesignProject.html",
-        page10: "/pages/SingleServiceAnotherPage.html",
-        page11: "/pages/SingleServiceDesign.html",
-        page12: "/pages/SingleServiceNezaratr.html",
+        index: resolve(__dirname, "./pages/index.html"),
+        page1: resolve(__dirname, "./pages/blog.html"),
+        page2: resolve(__dirname, "./pages/contactWithUs.html"),
+        page3: resolve(__dirname, "./pages/inside-decoration.html"),
+        page4: resolve(__dirname, "./pages/javaaz.html"),
+        page5: resolve(__dirname, "./pages/outside-decoration.html"),
+        page6: resolve(__dirname, "./pages/projects.html"),
+        page7: resolve(__dirname, "./pages/ShowAllServices.html"),
+        page8: resolve(__dirname, "./pages/SingleBlog.html"),
+        page9: resolve(__dirname, "./pages/SingleDesignProject.html"),
+        page10: resolve(__dirname, "./pages/SingleServiceAnotherPage.html"),
+        page11: resolve(__dirname, "./pages/SingleServiceDesign.html"),
+        page12: resolve(__dirname, "./pages/SingleServiceNezaratr.html"),
       },
     },
-    assetsDir: "assets",
   },
 });
