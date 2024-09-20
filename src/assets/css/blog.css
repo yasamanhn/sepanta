@@ -1,6 +1,6 @@
 @font-face {
   font-family: "IranSansX";
-  src: url("../font/iransansX\ family/IRANSansX-Light.ttf")
+  src: url("/src/assets/font/iransansX\ family/IRANSansX-Light.ttf")
     format("truetype");
 }
 /* check box style */

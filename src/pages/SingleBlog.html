@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>مقاله ای از یک وبلاگ</title>
 
-    <link rel="stylesheet" href="../assets/css/style.css" />
-    <link href="../assets/css/input.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../assets/css/dakheli.css" />
-    <link rel="stylesheet" href="../assets/css/footerAndnavbar.css" />
-    <link rel="stylesheet" href="../assets/css/landing.css" />
+    <link href="/src/assets/css/input.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/assets/css/output.css" />
+    <link rel="stylesheet" href="/src/assets/css/dakheli.css" />
+    <link rel="stylesheet" href="/src/assets/css/footerAndnavbar.css" />
+    <link rel="stylesheet" href="/src/assets/css/landing.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -26,7 +26,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/src/assets/css/swiper-bundle.min.css" />
     <style>
       /*=============== GOOGLE FONTS ===============*/
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
@@ -547,7 +547,7 @@
     <section>
       <div
         class="cover-image bg-no-repeat bg-cover relative"
-        style="background-image: url(/images/section1blog.png)"
+        style="background-image: url(../assets/images/section1blog.png)"
       >
         <div class="text-container">
           <div class="p-32">
@@ -580,7 +580,10 @@
     <!-- section 2 pictures -->
     <section
       id="section1"
-      style="background-image: url(/images/backgroundblog.png); padding: 5%"
+      style="
+        background-image: url(../assets/images/backgroundblog.png);
+        padding: 5%;
+      "
     >
       <!-- picture 1 -->
       <section class="mt-20 mb-32" style="direction: ltr">
@@ -992,10 +995,10 @@
       <!-- end section footer -->
     </footer>
 
-    <script src="../script/services.js"></script>
+    <script type="module" src="../script/services.js"></script>
     <script src="../script/index.js"></script>
     <script type="module" src="../script/checkBoxFilter-pagination.js"></script>
-    <script src="../script/blog.js"></script>
+    <script type="module" src="../script/blog.js"></script>
 
     <script>
       window.addEventListener("scroll", function () {

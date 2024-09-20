@@ -12,7 +12,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build ",
+    "build": "vite build",
+    "tailwind:build": "npx tailwindcss -i ./src/assets/css/input.css -o ./dist/assets/output.css --minify",
     "serve": "vite preview"
   },
   "devDependencies": {

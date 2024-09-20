@@ -2,7 +2,10 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
+  base: "./",
+  root: "src",
   build: {
+    outDir: "../dist",
     rollupOptions: {
       input: {
         index: resolve(__dirname, "./src/pages/index.html"),
@@ -19,6 +22,9 @@ export default defineConfig({
         page11: resolve(__dirname, "./src/pages/SingleServiceDesign.html"),
         page12: resolve(__dirname, "./src/pages/SingleServiceNezaratr.html"),
       },
+    },
+    optimizeDeps: {
+      include: ["swiper"],
     },
   },
 });
